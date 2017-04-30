@@ -1,5 +1,5 @@
 [user]
-	name = Kenj I
+	name = Kenj-I
 	# emailは.gitconfig.localに書く
 	# スパム対策のため。
 [include]
@@ -10,6 +10,7 @@
 	graph = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
 [core]
 	excludesfile = /Users/kenjiiwase/.gitignore_global
+	editor = vim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
@@ -18,3 +19,5 @@
 	trustExitCode = true
 [commit]
 	template = /Users/kenjiiwase/.stCommitMsg
+[color]
+	ui = true
