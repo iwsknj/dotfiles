@@ -1,80 +1,66 @@
-"""""""""""""""""""""""""""""""""""""""""
-" neobundle
-"""""""""""""""""""""""""""""""""""""""""
-filetype plugin indent on
+"dein Scripts-----------------------------
 
-set nocompatible
-if has('vim_starting')
-	 set runtimepath+=~/.vim/bundle/neobundle.vim
+let s:dein_dir = expand('~/.vim/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-	NeoBundleFetch 'Shougo/neobundle.vim'
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+endif
 
-	""""""""""""""""""""""""""""""""""""
-	" vim plugins
-	""""""""""""""""""""""""""""""""""""
-	
-	" コードを自動的に入力補完してくれる
-	NeoBundle 'Shougo/neocomplete'
-	
-	" スニペット
-	NeoBundle 'Shougo/neosnippet'
-	NeoBundle 'Shougo/neosnippet-snippets'
 
-	" ファイルをtree表示してくれる
-	NeoBundle 'scrooloose/nerdtree'
+" Required:
+execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 
-	" コメントON/OFFを手軽に実行
-	NeoBundle 'tomtom/tcomment_vim'
+" Required:
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-	" シングルクオートとダブルクオートの入れ替え等
-	NeoBundle 'tpope/vim-surround'
+  " Let dein manage dein
+  " Required:
+  call dein#add(s:dein_repo_dir)
 
-	" インデントに色を付けて見やすくする
-	"NeoBundle 'nathanaelkane/vim-indent-guides'
-	"let g:indent_guides_enable_on_vim_startup = 1
+  	"tomlファイルを使用---------------------------------------------
+	" プラグインリストを収めた TOML ファイル
+	" 予め TOML ファイル（後述）を用意しておく
+	let s:toml_dir  = '~/dotfiles/dein'
+	let s:toml      = s:toml_dir . '/dein.toml'
+	let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
 
-	" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-	let g:indent_guides_enable_on_vim_startup = 1
+	" TOML を読み込み、キャッシュしておく
+	call dein#load_toml(s:toml,      {'lazy': 0})
+	call dein#load_toml(s:lazy_toml, {'lazy': 1})
+	"---------------------------------------------------------------
 
-	" ログファイルを色づけしてくれる
-	NeoBundle 'vim-scripts/AnsiEsc.vim'
+  " Add or remove your plugins here:
+  "call dein#add('Shougo/neosnippet.vim')
+  "call dein#add('Shougo/neosnippet-snippets')
 
-	" 行末の半角スペースを可視化
-	NeoBundle 'bronson/vim-trailing-whitespace'
-	
-	" 下のステータスラインを見やすくする(設定は下に)
-	NeoBundle 'itchyny/lightline.vim'
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
-	" HTML5のタグに色を付ける
-	NeoBundle 'taichouchou2/html5.vim'
-	
-	" JSのタグに色を付ける
-	NeoBundle 'taichouchou2/vim-javascript'
-	
-	" CSS3のタグに色を付ける
-	NeoBundle 'hail2u/vim-css3-syntax'
-	
-	" Sass
-	"NeoBundle 'AtsushiM/search-parent.vim'
-	"NeoBundle 'AtsushiM/sass-compile.vim'
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
-	" Emmet
-	NeoBundle 'mattn/emmet-vim'
-	
-	" カラースキーマ molokai
-	NeoBundle 'tomasr/molokai' 
-	
-	
+" Required:
+filetype plugin indent on
+syntax enable
 
-	""""""""""""""""""""""""""""""""""""
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
 
-call neobundle#end()
+"End dein Scripts-------------------------
 
-" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/-vimrc-sample
 
-""""""""""""""""""""""""""""""
+
 
 
 """"""""""""""""""""""""""""""
