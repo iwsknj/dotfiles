@@ -80,5 +80,7 @@
 	[[plugins]]
 	repo = 'altercation/vim-colors-solarized'
 
-
+	# monokai
+	[[plugins]]
+	repo = 'sickill/vim-monokai'
 

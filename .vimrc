@@ -37,8 +37,8 @@ if dein#load_state(s:dein_dir)
 	"---------------------------------------------------------------
 
   " Add or remove your plugins here:
-  "call dein#add('Shougo/neosnippet.vim')
-  "call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
 
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -140,14 +140,28 @@ set showcmd
 " ファイルが外部で変更された際に自動で読み込む
 set autoread
 
-" カラースキーマ
+" 背景色をターミナルと同じにする
 autocmd ColorScheme * highlight Normal ctermbg=none
+
+" 行のラインの背景色をターミナルと同じにする
 autocmd ColorScheme * highlight LineNr ctermbg=none
+
+" カラースキーマのシンタックスを有効にする
 syntax on
-colorscheme molokai
 set term=xterm-256color
+
+" vimで使える色を256色にする
 set t_Co=256
-highlight LineNr ctermfg=yellow
+
+" カラースキーマ
+colorscheme monokai
+
+"colorscheme molokai
+
+" カーソルの行の数字の色
+highlight LineNr ctermfg=215
+" カーソルの行の数字のハイライトの色
+highlight CursorLineNr ctermfg=227
 
 " 行番号を表示
 set number
