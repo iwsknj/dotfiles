@@ -51,7 +51,7 @@
 
 	# HTML5のタグに色を付ける
 	[[plugins]]
-	repo =  'taichouchou2/html5.vim'
+	repo =  'othree/html5.vim'
 
 	# JSのタグに色を付ける
 	[[plugins]]
@@ -62,9 +62,9 @@
 	repo =  'hail2u/vim-css3-syntax'
 
 	# Sass
-	[[plugins]]
-	repo =  'AtsushiM/search-parent.vim'
-	repo =  'AtsushiM/sass-compile.vim'
+	#[[plugins]]
+	#repo =  'AtsushiM/search-parent.vim'
+	#repo =  'AtsushiM/sass-compile.vim'
 
 	# Emmet
 	[[plugins]]

@@ -154,14 +154,17 @@ set term=xterm-256color
 set t_Co=256
 
 " カラースキーマ
-colorscheme monokai
-
-"colorscheme molokai
+"colorscheme monokai
+"colorscheme solarized
+colorscheme molokai
+"colorscheme jellybeans
+"colorscheme hybrid
+"colorscheme gruvbox
 
 " カーソルの行の数字の色
 highlight LineNr ctermfg=215
 " カーソルの行の数字のハイライトの色
-highlight CursorLineNr ctermfg=227
+highlight CursorLineNr ctermfg=yellow
 
 " 行番号を表示
 set number
