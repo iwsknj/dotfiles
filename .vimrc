@@ -1,3 +1,4 @@
+"プラグインコード"
 "dein Scripts-----------------------------
 
 let s:dein_dir = expand('~/.vim/dein')
@@ -223,9 +224,54 @@ set wrapscan
 """"""""""""""""""""""""""""""
 " Keymap
 """"""""""""""""""""""""""""""
-noremap j gj
-noremap k gk
+"noremap => ノーマルモード+ビジュアルモード
+"noremap! => コマンドラインモード+インサートモード
+"nnoremap => ノーマルモード
+"vnoremap => ビジュアル（選択）モード
+"cnoremap => コマンドラインモード
+"inoremap => インサートモード
 
+
+
+
+"日本語入力がオンのままでも使えるコマンド(Enterキーは必要)
+nnoremap あ a
+nnoremap い i
+nnoremap う u
+nnoremap お o
+nnoremap っｄ dd
+nnoremap っｙ yy
+
+
+"表示行単位での上下移動
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+
+"一画面分の移動
+nnoremap <S-k> <C-b>
+nnoremap <S-j> <C-f>
+
+"行の端への移動
+nnoremap <C-h> 0
+nnoremap <S-h> ^
+nnoremap <S-l> $
+
+"カッコ補完
+imap { {}<LEFT>
+imap [ []<LEFT>
+imap ( ()<LEFT>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+vnoremap { "zdi^V{<C-R>z}<ESC>
+vnoremap [ "zdi^V[<C-R>z]<ESC>
+vnoremap ( "zdi^V(<C-R>z)<ESC>
+vnoremap " "zdi^V"<C-R>z^V"<ESC>
+vnoremap ' "zdi'<C-R>z'<ESC>}
 
 
 """"""""""""""""""""""""""""""
@@ -238,4 +284,15 @@ let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ }
 
-""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""
+" 最後のカーソル位置を復元する
+"""""""""""""""""""""""""""""""
+if has("autocmd")
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+endif
+""""""""""""""""""""""""""""""
