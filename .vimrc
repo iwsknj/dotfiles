@@ -15,7 +15,7 @@ endif
 
 
 " Required:
-execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p:gs?\\?/?')
 
 " Required:
 if dein#load_state(s:dein_dir)
