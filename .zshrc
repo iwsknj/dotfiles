@@ -42,20 +42,20 @@ alias sui='sudo -i'
 
 #vagrant
 
-alias va='vagrant'
-alias vst='vagrant status'
-alias vs='vagrant ssh'
-alias vr='vagrant reload'
-alias vra='vagrant rsync-auto'
-alias vu='vagrant up'
-alias vh='vagrant halt'
-alias vsus='vagrant suspend'
-alias vpi='vagrant plugin install'
-alias vpl='vagrant plugin list'
-alias vbr='vagrant box remove'
-alias vbl='vagrant box list'
-alias vbi='vagrant box init'
-alias vv='vagrant -v'
+	alias va='vagrant'
+	alias vst='vagrant status'
+	alias vs='vagrant ssh'
+	alias vr='vagrant reload'
+	alias vra='vagrant rsync-auto'
+	alias vu='vagrant up'
+	alias vh='vagrant halt'
+	alias vsus='vagrant suspend'
+	alias vpi='vagrant plugin install'
+	alias vpl='vagrant plugin list'
+	alias vbr='vagrant box remove'
+	alias vbl='vagrant box list'
+	alias vbi='vagrant box init'
+	alias vv='vagrant -v'
 
 
 #Git
@@ -102,5 +102,5 @@ alias vv='vagrant -v'
 
 
 # Vim
-alias v='vim'
-alias vi='vim'
+	alias v='vim'
+	alias vi='vim'
