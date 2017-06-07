@@ -16,6 +16,7 @@ for f in .??*; do
 done
 
 [ -e ~/.gitconfig.local ] || cp ~/dotfiles/.gitconfig.local.template ~/.gitconfig.local
+[ -e ~/.gitmessage.local ] || cp ~/dotfiles/.gitmessage.local.template ~/.gitmessage.local
 
 cat << END
 
