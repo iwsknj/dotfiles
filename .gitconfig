@@ -15,7 +15,7 @@
 	editor = vim
 
 [merge]
-    ff = false
+    # ff = false
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
