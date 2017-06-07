@@ -11,6 +11,7 @@ echo "start setup..."
 for f in .??*; do
 	[ "$f" = ".git" ] && continue
 	[ "$f" = ".gitconfig.local.template" ] && continue
+	[ "$f" = ".gitmessage.local.template" ] && continue
 
 	ln -snfv ~/dotfiles/"$f" ~/
 done
