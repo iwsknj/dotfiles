@@ -1,7 +1,7 @@
 "プラグインコード"
 "dein Scripts-----------------------------
 
-let s:dein_dir = expand('~/dotfiles/.vim/dein')
+let s:dein_dir = expand('~/.vim/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 
@@ -15,11 +15,11 @@ endif
 
 
 " Required:
-execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p:gs?\\?/?')
+execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 "set runtimepath+=~/dotfiles/.vim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state(s:dein_dir)
+if dein#load_state(expand('~/.vim/dein'))
   call dein#begin(s:dein_dir)
 
   " Let dein manage dein
