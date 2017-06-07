@@ -42,7 +42,7 @@ alias sui='sudo -i'
 
 #vagrant
 
-alias v='vagrant'
+alias va='vagrant'
 alias vst='vagrant status'
 alias vs='vagrant ssh'
 alias vr='vagrant reload'
@@ -60,43 +60,47 @@ alias vv='vagrant -v'
 
 #Git
 
-alias graph="log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short"
+	alias graph="log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short"
 
-alias g='git'
-alias gg='git graph'
-alias gl='git log'
-alias gs='git status'
-alias gi='git init'
+	alias g='git'
+	alias gg='git graph'
+	alias gl='git log'
+	alias gs='git status'
+	alias gi='git init'
 
-##branch
-alias gb='git branch'
-alias gch='git checkout'
-alias gchb='git checkout -b'
-alias gbd='git branch --delete'
-alias gba='git branch --all'
+	##branch
+	alias gb='git branch'
+	alias gch='git checkout'
+	alias gchb='git checkout -b'
+	alias gbd='git branch --delete'
+	alias gba='git branch --all'
 
-##comit
-alias ga='git add'
-alias gaa='git add .'
-alias gc='git commit'
-alias gcm='git commit -m'
-alias gca='git commit --amend -m'
+	##comit
+	alias ga='git add'
+	alias gaa='git add .'
+	alias gc='git commit'
+	alias gcm='git commit -m'
+	alias gca='git commit --amend -m'
 
-##merge
-alias gm='git merge'
-alias gmnc='git merge --no-commit'
-alias gmnf='git merge --no-ff'
+	##merge
+	alias gm='git merge'
+	alias gmnc='git merge --no-commit'
+	alias gmnf='git merge --no-ff'
 
-##fetch
-alias gf='git fetch'
-alias gcl='git clone'
-alias gpl='git pull'
+	##fetch
+	alias gf='git fetch'
+	alias gcl='git clone'
+	alias gpl='git pull'
 
-##push
-alias gps='git push'
-alias gpsf='git push --force'
-alias gpsa='git push --all'
+	##push
+	alias gps='git push'
+	alias gpsf='git push --force'
+	alias gpsa='git push --all'
 
-##rebase
-alias gr='git rebase'
+	##rebase
+	alias gr='git rebase'
 
+
+# Vim
+alias v='vim'
+alias vi='vim'

@@ -1,80 +1,67 @@
-"""""""""""""""""""""""""""""""""""""""""
-" neobundle
-"""""""""""""""""""""""""""""""""""""""""
-filetype plugin indent on
+"プラグインコード"
+"dein Scripts-----------------------------
 
-set nocompatible
-if has('vim_starting')
-	 set runtimepath+=~/.vim/bundle/neobundle.vim
+let s:dein_dir = expand('~/.vim/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-	NeoBundleFetch 'Shougo/neobundle.vim'
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+endif
 
-	""""""""""""""""""""""""""""""""""""
-	" vim plugins
-	""""""""""""""""""""""""""""""""""""
-	
-	" コードを自動的に入力補完してくれる
-	NeoBundle 'Shougo/neocomplete'
-	
-	" スニペット
-	NeoBundle 'Shougo/neosnippet'
-	NeoBundle 'Shougo/neosnippet-snippets'
 
-	" ファイルをtree表示してくれる
-	NeoBundle 'scrooloose/nerdtree'
+" Required:
+execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 
-	" コメントON/OFFを手軽に実行
-	NeoBundle 'tomtom/tcomment_vim'
+" Required:
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-	" シングルクオートとダブルクオートの入れ替え等
-	NeoBundle 'tpope/vim-surround'
+  " Let dein manage dein
+  " Required:
+  call dein#add(s:dein_repo_dir)
 
-	" インデントに色を付けて見やすくする
-	"NeoBundle 'nathanaelkane/vim-indent-guides'
-	"let g:indent_guides_enable_on_vim_startup = 1
+  	"tomlファイルを使用---------------------------------------------
+	" プラグインリストを収めた TOML ファイル
+	" 予め TOML ファイル（後述）を用意しておく
+	let s:toml_dir  = '~/dotfiles/dein'
+	let s:toml      = s:toml_dir . '/dein.toml'
+	let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
 
-	" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-	let g:indent_guides_enable_on_vim_startup = 1
+	" TOML を読み込み、キャッシュしておく
+	call dein#load_toml(s:toml,      {'lazy': 0})
+	call dein#load_toml(s:lazy_toml, {'lazy': 1})
+	"---------------------------------------------------------------
 
-	" ログファイルを色づけしてくれる
-	NeoBundle 'vim-scripts/AnsiEsc.vim'
+  " Add or remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
 
-	" 行末の半角スペースを可視化
-	NeoBundle 'bronson/vim-trailing-whitespace'
-	
-	" 下のステータスラインを見やすくする(設定は下に)
-	NeoBundle 'itchyny/lightline.vim'
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
-	" HTML5のタグに色を付ける
-	NeoBundle 'taichouchou2/html5.vim'
-	
-	" JSのタグに色を付ける
-	NeoBundle 'taichouchou2/vim-javascript'
-	
-	" CSS3のタグに色を付ける
-	NeoBundle 'hail2u/vim-css3-syntax'
-	
-	" Sass
-	"NeoBundle 'AtsushiM/search-parent.vim'
-	"NeoBundle 'AtsushiM/sass-compile.vim'
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
-	" Emmet
-	NeoBundle 'mattn/emmet-vim'
-	
-	" カラースキーマ molokai
-	NeoBundle 'tomasr/molokai' 
-	
-	
+" Required:
+filetype plugin indent on
+syntax enable
 
-	""""""""""""""""""""""""""""""""""""
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
 
-call neobundle#end()
+"End dein Scripts-------------------------
 
-" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/-vimrc-sample
 
-""""""""""""""""""""""""""""""
+
 
 
 """"""""""""""""""""""""""""""
@@ -154,14 +141,31 @@ set showcmd
 " ファイルが外部で変更された際に自動で読み込む
 set autoread
 
-" カラースキーマ
+" 背景色をターミナルと同じにする
 autocmd ColorScheme * highlight Normal ctermbg=none
+
+" 行のラインの背景色をターミナルと同じにする
 autocmd ColorScheme * highlight LineNr ctermbg=none
+
+" カラースキーマのシンタックスを有効にする
 syntax on
-colorscheme molokai
 set term=xterm-256color
+
+" vimで使える色を256色にする
 set t_Co=256
-highlight LineNr ctermfg=yellow
+
+" カラースキーマ
+"colorscheme monokai
+"colorscheme solarized
+colorscheme molokai
+"colorscheme jellybeans
+"colorscheme hybrid
+"colorscheme gruvbox
+
+" カーソルの行の数字の色
+highlight LineNr ctermfg=215
+" カーソルの行の数字のハイライトの色
+highlight CursorLineNr ctermfg=yellow
 
 " 行番号を表示
 set number
@@ -220,9 +224,54 @@ set wrapscan
 """"""""""""""""""""""""""""""
 " Keymap
 """"""""""""""""""""""""""""""
-noremap j gj
-noremap k gk
+"noremap => ノーマルモード+ビジュアルモード
+"noremap! => コマンドラインモード+インサートモード
+"nnoremap => ノーマルモード
+"vnoremap => ビジュアル（選択）モード
+"cnoremap => コマンドラインモード
+"inoremap => インサートモード
 
+
+
+
+"日本語入力がオンのままでも使えるコマンド(Enterキーは必要)
+nnoremap あ a
+nnoremap い i
+nnoremap う u
+nnoremap お o
+nnoremap っｄ dd
+nnoremap っｙ yy
+
+
+"表示行単位での上下移動
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+
+"一画面分の移動
+nnoremap <S-k> <C-b>
+nnoremap <S-j> <C-f>
+
+"行の端への移動
+nnoremap <C-h> 0
+nnoremap <S-h> ^
+nnoremap <S-l> $
+
+"カッコ補完
+imap { {}<LEFT>
+imap [ []<LEFT>
+imap ( ()<LEFT>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+vnoremap { "zdi^V{<C-R>z}<ESC>
+vnoremap [ "zdi^V[<C-R>z]<ESC>
+vnoremap ( "zdi^V(<C-R>z)<ESC>
+vnoremap " "zdi^V"<C-R>z^V"<ESC>
+vnoremap ' "zdi'<C-R>z'<ESC>}
 
 
 """"""""""""""""""""""""""""""
@@ -235,4 +284,15 @@ let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ }
 
-""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""
+" 最後のカーソル位置を復元する
+"""""""""""""""""""""""""""""""
+if has("autocmd")
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+endif
+""""""""""""""""""""""""""""""
