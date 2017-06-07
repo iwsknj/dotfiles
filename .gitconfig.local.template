@@ -6,4 +6,4 @@
 
 [commit]
 	#環境によってコミットメッセージを変更する
-	template = ~/.gitmessage
+	template = ~/.gitmessage.local
