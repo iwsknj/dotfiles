@@ -15,7 +15,8 @@ endif
 
 
 " Required:
-execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p:gs?\\?/?')
+"execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p:gs?\\?/?')
+set runtimepath+=~/dotfiles/.vim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
 if dein#load_state(s:dein_dir)

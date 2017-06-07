@@ -6,4 +6,4 @@ let g:dein#_ftplugin = ftplugin
 let g:dein#_base_path = '/Users/kenjiiwase/.vim/dein'
 let g:dein#_runtime_path = '/Users/kenjiiwase/.vim/dein/.cache/.vimrc/.dein'
 let g:dein#_cache_path = '/Users/kenjiiwase/.vim/dein/.cache/.vimrc'
-let &runtimepath = '/Users/kenjiiwase/.vim/dein/repos/github.com/Shougo/dein.vim/,/Users/kenjiiwase/.vim,/Users/kenjiiwase/.vim/dein/.cache/.vimrc/.dein,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim80,/Users/kenjiiwase/.vim/dein/.cache/.vimrc/.dein/after,/usr/local/share/vim/vimfiles/after,/Users/kenjiiwase/.vim/after'
+let &runtimepath = '/Users/kenjiiwase/.vim,/Users/kenjiiwase/.vim/dein/.cache/.vimrc/.dein,/usr/local/share/vim/vimfiles,/usr/local/share/vim/vim80,/Users/kenjiiwase/.vim/dein/.cache/.vimrc/.dein/after,/usr/local/share/vim/vimfiles/after,/Users/kenjiiwase/.vim/after,/Users/kenjiiwase/dotfiles/.vim/dein/repos/github.com/Shougo/dein.vim'
