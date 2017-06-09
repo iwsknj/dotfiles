@@ -26,6 +26,9 @@ psvar[1]="$vcs_info_msg_0_"
 add-zsh-hook precmd _update_vcs_info_msg
 RPROMPT="%v"
 
+#less
+export LESSCHARSET=utf-8
+
 #utility
 
 alias 1='cd ..'
