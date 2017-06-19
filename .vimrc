@@ -1,4 +1,6 @@
-"プラグインコード"
+"""""""""""""""""""""""""""""""""""""""""""
+"dein(プラグイン管理)コード"
+"""""""""""""""""""""""""""""""""""""""""""
 "dein Scripts-----------------------------
 
 let s:dein_dir = expand('~/.vim/dein')
@@ -59,11 +61,30 @@ syntax enable
 "  call dein#install()
 "endif
 
-"End dein Scripts-------------------------
+"""""""""""""""""""""""""""""""""""""""""""
+"End dein Scripts
+"""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""
+"プラグイン設定
+""""""""""""""""""""""""""""""""""""""""""""
+	"====NERDtree====
+	nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
+	"ファイル指定で開かれた場合はNERDTreeを表示しない
+	if !argc()
+		autocmd vimenter * NERDTree|normal gg3j
+	endif
 
+	"====Unite====
+	nnoremap <silent><C-r> :Unite<CR>
 
+	"常にインサートモードで起動
+	let g:unite_enable_start_insert = 1
+
+	"escを2回押すとUniteを閉じる
+	au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+	au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 """"""""""""""""""""""""""""""
 " 挿入モード時、ステータスラインの色を変更
@@ -272,6 +293,8 @@ vnoremap [ "zdi^V[<C-R>z]<ESC>
 vnoremap ( "zdi^V(<C-R>z)<ESC>
 vnoremap " "zdi^V"<C-R>z^V"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>}
+
+"NERDTR
 
 
 """"""""""""""""""""""""""""""

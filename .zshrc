@@ -29,6 +29,10 @@ RPROMPT="%v"
 #less
 export LESSCHARSET=utf-8
 
+#node
+
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
 #utility
 
 alias 1='cd ..'
