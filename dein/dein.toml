@@ -19,6 +19,11 @@
 	[[plugins]]
 	repo = 'Shougo/unite.vim'
 
+	# unite.vimと依存関係にあるらしい
+	[[plugins]]
+	repo = 'Shougo/vimproc.vim'
+	build = 'make'
+
 	# ファイルをtree表示してくれる
 	[[plugins]]
 	repo =  'scrooloose/nerdtree'
