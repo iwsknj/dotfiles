@@ -77,7 +77,6 @@ syntax enable
 	endif
 
 	"====Unite====
-	nnoremap <silent><C-r> :Unite<CR>
 
 	"常にインサートモードで起動
 	let g:unite_enable_start_insert = 1
@@ -293,9 +292,6 @@ vnoremap [ "zdi^V[<C-R>z]<ESC>
 vnoremap ( "zdi^V(<C-R>z)<ESC>
 vnoremap " "zdi^V"<C-R>z^V"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>}
-
-"NERDTR
-
 
 """"""""""""""""""""""""""""""
 " plugin setting
