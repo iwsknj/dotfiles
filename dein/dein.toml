@@ -19,6 +19,9 @@
 	[[plugins]]
 	repo = 'Shougo/unite.vim'
 
+	[[plugins]]
+	repo = 'Shougo/neomru.vim'
+
 	# unite.vimと依存関係にあるらしい
 	[[plugins]]
 	repo = 'Shougo/vimproc.vim'
@@ -37,10 +40,10 @@
 	repo =  'tpope/vim-surround'
 
 	# インデントに色を付けて見やすくする
-	[[plugins]]
-	repo =  'nathanaelkane/vim-indent-guides'
-		# vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-		hock_add = 'let g:indent_guides_enable_on_vim_startup = 1'
+	#[[plugins]]
+	#repo =  'nathanaelkane/vim-indent-guides'
+	#	# vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
+	#	hock_add = 'let g:indent_guides_enable_on_vim_startup = 1'
 
 	# ログファイルを色づけしてくれる
 	[[plugins]]
@@ -49,6 +52,10 @@
 	# 行末の半角スペースを可視化
 	[[plugins]]
 	repo =  'bronson/vim-trailing-whitespace'
+
+	# インデントの可視化
+	#[[plugins]]
+	#repo = 'Yggdroot/indentLine'
 
 	# 下のステータスラインを見やすくする(設定は下に)
 	[[plugins]]
