@@ -231,7 +231,7 @@ syntax enable
 		au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 		"====Emmet=====
-			let g:user_emmet_leader_key='<c-y>'
+			let g:user_emmet_leader_key='<C-y>'
 
 """"""""""""""""""""""""""""""
 " 挿入モード時、ステータスラインの色を変更
