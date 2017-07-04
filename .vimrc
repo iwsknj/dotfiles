@@ -231,8 +231,21 @@ syntax enable
 		au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 		"====Emmet=====
-			let g:user_emmet_leader_key='<C-y>'
-
+			let g:user_emmet_mode = 'iv'
+			let g:user_emmet_leader_key = '<C-f>'
+			let g:user_emmet_settings = {
+				  \ 'lang' : 'ja',
+				  \ 'html' : {
+				  \   'filters' : 'html',
+				  \ },
+				  \ 'css' : {
+				  \   'filters' : 'fc',
+				  \ },
+				  \ 'php' : {
+				  \   'extends' : 'html',
+				  \   'filters' : 'html',
+				  \ },
+				  \}
 """"""""""""""""""""""""""""""
 " 挿入モード時、ステータスラインの色を変更
 """"""""""""""""""""""""""""""
