@@ -234,7 +234,9 @@ syntax enable
 			let g:user_emmet_mode = 'iv'
 			let g:user_emmet_leader_key = '<C-f>'
 			let g:user_emmet_settings = {
-				  \ 'lang' : 'ja',
+				  \ 'variables':{
+				  \ 'lang':'ja',
+				  \ },
 				  \ 'html' : {
 				  \   'filters' : 'html',
 				  \ },
