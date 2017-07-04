@@ -89,10 +89,10 @@
 	repo = 'tomasr/molokai'
 
 	# solarized
-	[[plugins]]
-	repo = 'altercation/vim-colors-solarized'
+	#[[plugins]]
+	#repo = 'altercation/vim-colors-solarized'
 
 	# monokai
-	[[plugins]]
-	repo = 'sickill/vim-monokai'
+	#[[plugins]]
+	#repo = 'sickill/vim-monokai'
 
