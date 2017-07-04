@@ -157,7 +157,7 @@ syntax enable
 		" \ neosnippet#expandable_or_jumpable() ?
 		" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 		smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-		\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+		\^
 
 		" For conceal markers.
 		if has('conceal')
@@ -171,6 +171,9 @@ syntax enable
 		if !argc()
 			autocmd vimenter * NERDTree|normal gg3j
 		endif
+
+		let s:my_snippet = '~/dotfiles/vim_snippet/'
+		let g:neosnippet#snippets_directory = s:my_snippet
 
 	"====Unite====
 		" key map
