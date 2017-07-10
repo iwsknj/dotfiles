@@ -234,6 +234,7 @@ syntax enable
 			let g:user_emmet_mode = 'iv'
 			let g:user_emmet_leader_key = '<C-f>'
 			let g:user_emmet_settings = {
+				  \ 'indentation': '	',
 				  \ 'variables':{
 				  \ 'lang':'ja',
 				  \ },
@@ -248,6 +249,12 @@ syntax enable
 				  \   'filters' : 'html',
 				  \ },
 				  \}
+
+		"====HTML5====
+			let g:html5_event_handler_attributes_complete = 1
+			let g:html5_rdfa_attributes_complete = 1
+			let g:html5_microdata_attributes_complete = 1
+			let g:html5_aria_attributes_complete = 1
 """"""""""""""""""""""""""""""
 " 挿入モード時、ステータスラインの色を変更
 """"""""""""""""""""""""""""""
@@ -341,7 +348,8 @@ set list listchars=tab:\¦\_  "タブの表示
 set backspace=indent,eol,start " バックスペースを、空白、行末、行頭でも使えるようにする
 set tabstop=4 " 行頭以外のTab文字の表示幅（スペースいくつ分）
 set shiftwidth=4 " 行頭でのTab文字の表示幅
-set autoindent " 改行時に自動でインデントを行なう
+"set autoindent " 改行時に自動でインデントを行なう
+set smartindent " オートインデント
 set mouse=a " マウスを有効にする
 set clipboard=unnamed,autoselect " OSとクリップボードを共有する
 set confirm " 未保存ファイルの終了時に保存確認を行なう
@@ -489,4 +497,14 @@ if &term =~ "xterm"
 	cnoremap <special> <Esc>[200~ <nop>
 	cnoremap <special> <Esc>[201~ <nop>
 endif
+""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""
+" php 設定
+""""""""""""""""""""""""""""
+let g:php_baselib       = 1
+let g:php_htmlInStrings = 1
+let g:php_noShortTags   = 1
+let g:php_sql_query     = 1
 """"""""""""""""""""""""""""
