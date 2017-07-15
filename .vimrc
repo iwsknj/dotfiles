@@ -255,6 +255,10 @@ syntax enable
 			let g:html5_rdfa_attributes_complete = 1
 			let g:html5_microdata_attributes_complete = 1
 			let g:html5_aria_attributes_complete = 1
+
+
+		"====vim_easy_align===
+			vmap <Enter> <Plug>(EasyAlign)
 """"""""""""""""""""""""""""""
 " 挿入モード時、ステータスラインの色を変更
 """"""""""""""""""""""""""""""
@@ -323,42 +327,42 @@ set fileencodings=utf-8
 set fileformats=unix,dos,mac
 set ambiwidth=double
 
-set nobackup " バックアップファイルを作らない
-set noswapfile " スワップファイルを作らない
-set autoread " 編集中のファイルが変更されたら自動で読み直す
-set hidden " バッファが編集中でもその他のファイルを開けるように
-set showcmd " 入力中のコマンドをステータスに表示する
-set autoread " ファイルが外部で変更された際に自動で読み込む
+set nobackup                     " バックアップファイルを作らない
+set noswapfile                   " スワップファイルを作らない
+set autoread                     " 編集中のファイルが変更されたら自動で読み直す
+set hidden                       " バッファが編集中でもその他のファイルを開けるように
+set showcmd                      " 入力中のコマンドをステータスに表示する
+set autoread                     " ファイルが外部で変更された際に自動で読み込む
 
-set number " 行番号を表示
-set cursorline " 現在の行を強調表示
-"set cursorcolumn " 現在の行を強調表示（縦）
-set virtualedit=onemore " 行末の1文字先までカーソルを移動できるように
-set smartindent " インデントはスマートインデント
-set visualbell " ビープ音を可視化
-set showmatch " 括弧入力時の対応する括弧を表示
-set laststatus=2 " ステータスラインを常に表示
-set wildmode=list:longest " コマンドラインの補完
-set wrap " 行を折り返さない
-set title " ターミナルのタイトルをセットする
-set showmatch " 対応するカッコを強調表示する
-"set list listchars=tab:\▸\- " タブを以下の文字で表示する
+set number                       " 行番号を表示
+set cursorline                   " 現在の行を強調表示
+" set cursorcolumn               " 現在の行を強調表示（縦）
+set virtualedit=onemore          " 行末の1文字先までカーソルを移動できるように
+set smartindent                  " インデントはスマートインデント
+set visualbell                   " ビープ音を可視化
+set showmatch                    " 括弧入力時の対応する括弧を表示
+set laststatus=2                 " ステータスラインを常に表示
+set wildmode=list:longest        " コマンドラインの補完
+set wrap                         " 行を折り返さない
+set title                        " ターミナルのタイトルをセットする
+set showmatch                    " 対応するカッコを強調表示する
+" set list listchars=tab:\▸\-    " タブを以下の文字で表示する
 hi SpecialKey ctermfg=darkmagenta
-set list listchars=tab:\¦\_  "タブの表示
-set backspace=indent,eol,start " バックスペースを、空白、行末、行頭でも使えるようにする
-set tabstop=4 " 行頭以外のTab文字の表示幅（スペースいくつ分）
-set shiftwidth=4 " 行頭でのTab文字の表示幅
-"set autoindent " 改行時に自動でインデントを行なう
-set smartindent " オートインデント
-set mouse=a " マウスを有効にする
+set list listchars=tab:\¦\_      " タブの表示
+set backspace=indent,eol,start   " バックスペースを、空白、行末、行頭でも使えるようにする
+set tabstop=4                    " 行頭以外のTab文字の表示幅（スペースいくつ分）
+set shiftwidth=4                 " 行頭でのTab文字の表示幅
+                                 " set autoindent " 改行時に自動でインデントを行なう
+set smartindent                  " オートインデント
+set mouse=a                      " マウスを有効にする
 set clipboard=unnamed,autoselect " OSとクリップボードを共有する
-set confirm " 未保存ファイルの終了時に保存確認を行なう
+set confirm                      " 未保存ファイルの終了時に保存確認を行なう
 
-"検索設定
-set ignorecase " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
-set smartcase " 検索文字列に大文字が含まれている場合は区別して検索する
-set hlsearch " 検索結果をハイライト表示する
-set wrapscan " 検索時に最後まで行ったら最初に戻る
+                                 " 検索設定
+set ignorecase                   " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+set smartcase                    " 検索文字列に大文字が含まれている場合は区別して検索する
+set hlsearch                     " 検索結果をハイライト表示する
+set wrapscan                     " 検索時に最後まで行ったら最初に戻る
 " ESCキー2度押しでハイライトの切り替え
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>"
 
