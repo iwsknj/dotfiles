@@ -29,9 +29,12 @@ RPROMPT="%v"
 #less
 export LESSCHARSET=utf-8
 
-#node
-
+#node path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+#rbenv path
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
 
 #utility
 
