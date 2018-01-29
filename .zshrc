@@ -29,6 +29,12 @@ RPROMPT="%v"
 #less
 export LESSCHARSET=utf-8
 
+#fuel env
+export FUEL_ENV=kenji_dev
+
+#php path
+export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
+
 #node path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
