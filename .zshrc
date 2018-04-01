@@ -13,6 +13,32 @@ fi
 # Customize to your needs...
 
 
+# refere to suin
+# https://suin.io/568
+: "一般的な設定" && {
+  autoload -U compinit && compinit # 補完機能の強化
+  setopt correct # 入力しているコマンド名が間違っている場合にもしかして：を出す。
+  setopt nobeep # ビープを鳴らさない
+  setopt no_tify # バックグラウンドジョブが終了したらすぐに知らせる。
+  unsetopt auto_menu # タブによるファイルの順番切り替えをしない
+  setopt auto_pushd # cd -[tab]で過去のディレクトリにひとっ飛びできるようにする
+  setopt auto_cd # ディレクトリ名を入力するだけでcdできるようにする
+  setopt interactive_comments # コマンドラインでも # 以降をコメントと見なす
+}
+
+: "ヒストリ関連の設定" && {
+  HISTFILE=$HOME/.zsh_history # ヒストリファイル名
+  HISTSIZE=10000 # メモリに保存される履歴の件数
+  SAVEHIST=10000 # 履歴ファイルに保存される履歴の件数
+  setopt hist_ignore_dups # 直前と同じコマンドをヒストリに追加しない
+  setopt hist_ignore_all_dups # 重複するコマンドは古い法を削除する
+  setopt share_history # 異なるウィンドウでコマンドヒストリを共有する
+  setopt hist_no_store # historyコマンドは履歴に登録しない
+  setopt hist_reduce_blanks # 余分な空白は詰めて記録
+  setopt hist_verify # `!!`を実行したときにいきなり実行せずコマンドを見せる
+}
+
+
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
@@ -35,6 +61,9 @@ export FUEL_ENV=kenji_dev
 #php path
 export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 
+#php composer path
+export PATH=$PATH:~/.composer/vendor/bin/
+
 #node path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
@@ -44,15 +73,15 @@ eval "$(rbenv init -)"
 
 #utility
 
-alias 1='cd ..'
-alias 2='cd ../..'
-alias 3='cd ../../..'
-alias 4='cd ../../../..'
-alias 5='cd ../../../../..'
-alias 6='cd ../../../../../..'
+	alias 1='cd ..'
+	alias 2='cd ../..'
+	alias 3='cd ../../..'
+	alias 4='cd ../../../..'
+	alias 5='cd ../../../../..'
+	alias 6='cd ../../../../../..'
 
-alias su='sudo'
-alias sui='sudo -i'
+	alias su='sudo'
+	alias sui='sudo -i'
 
 
 
