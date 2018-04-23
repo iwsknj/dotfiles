@@ -48,6 +48,10 @@ fi
 	setopt always_last_prompt       # カーソル位置は保持したままファイル名一覧を順次その場で表示
 }
 
+: "sshコマンド補完を~/.ssh/configから行う" && {
+  function _ssh { compadd `fgrep 'Host ' ~/.ssh/config.* | grep -v '*' |  awk '{print $2}' | sort` }
+}
+
 
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
@@ -76,6 +80,7 @@ export PATH=$PATH:~/.composer/vendor/bin/
 
 #node path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$PATH:./node_modules/.bin
 
 #rbenv path
 export PATH=$HOME/.rbenv/bin:$PATH
@@ -159,3 +164,6 @@ eval "$(rbenv init -)"
 # Vim
 	alias v='vim'
 	alias vi='vim'
+
+# DOcker
+	alias dc='docker-compose'
