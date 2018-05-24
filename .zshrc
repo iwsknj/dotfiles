@@ -49,7 +49,7 @@ fi
 }
 
 : "sshコマンド補完を~/.ssh/configから行う" && {
-  function _ssh { compadd `fgrep 'Host ' ~/.ssh/config.* | grep -v '*' |  awk '{print $2}' | sort` }
+  function _ssh { compadd `fgrep 'Host ' ~/.ssh/*/config ~/.ssh/*/*/config | grep -v '*' | awk '{print $2}' | sort` }
 }
 
 
@@ -73,7 +73,7 @@ export LESSCHARSET=utf-8
 export FUEL_ENV=kenji_dev
 
 #php path
-export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
+export PATH="$(brew --prefix homebrew/core/php@7.1)/bin:$PATH"
 
 #php composer path
 export PATH=$PATH:~/.composer/vendor/bin/
@@ -165,5 +165,6 @@ eval "$(rbenv init -)"
 	alias v='vim'
 	alias vi='vim'
 
-# DOcker
+# Docker
+	alias d='docker'
 	alias dc='docker-compose'
