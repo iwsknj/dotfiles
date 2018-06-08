@@ -168,3 +168,10 @@ eval "$(rbenv init -)"
 # Docker
 	alias d='docker'
 	alias dc='docker-compose'
+	alias dps='docker ps'
+	alias dpsa='docker ps -a'
+	alias dcps='docker-compose ps'
+	alias dclg='docker-compose logs'
+	alias dbash='(){ docker exec -it $1 bash}' # bash login
+	alias dstopa='docker stop $(docker ps -q)' # stop all
+	alias drma='docker rm $(docker ps -aq)' # container remove all
