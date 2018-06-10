@@ -1,16 +1,8 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
 
 
 # refere to suin
@@ -51,20 +43,6 @@ fi
 : "sshコマンド補完を~/.ssh/configから行う" && {
   function _ssh { compadd `fgrep 'Host ' ~/.ssh/*/config ~/.ssh/*/*/config | grep -v '*' | awk '{print $2}' | sort` }
 }
-
-
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-function _update_vcs_info_msg()
-{
-psvar=()
-LANG=en_US.UTF-8 vcs_info
-psvar[1]="$vcs_info_msg_0_"
-}
-add-zsh-hook precmd _update_vcs_info_msg
-RPROMPT="%v"
 
 #less
 export LESSCHARSET=utf-8
