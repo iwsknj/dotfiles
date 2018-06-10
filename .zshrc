@@ -40,29 +40,39 @@ fi
 	setopt always_last_prompt       # カーソル位置は保持したままファイル名一覧を順次その場で表示
 }
 
-: "sshコマンド補完を~/.ssh/configから行う" && {
-  function _ssh { compadd `fgrep 'Host ' ~/.ssh/*/config ~/.ssh/*/*/config | grep -v '*' | awk '{print $2}' | sort` }
-}
 
-#less
-export LESSCHARSET=utf-8
+case ${OSTYPE} in
+	 darwin*)
 
-#fuel env
-export FUEL_ENV=kenji_dev
+		 : "sshコマンド補完を~/.ssh/configから行う" && {
+		   function _ssh { compadd `fgrep 'Host ' ~/.ssh/*/config ~/.ssh/*/*/config | grep -v '*' | awk '{print $2}' | sort` }
+		 }
 
-#php path
-export PATH="$(brew --prefix homebrew/core/php@7.1)/bin:$PATH"
+		#less
+		export LESSCHARSET=utf-8
 
-#php composer path
-export PATH=$PATH:~/.composer/vendor/bin/
+		#fuel env
+		export FUEL_ENV=kenji_dev
 
-#node path
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH=$PATH:./node_modules/.bin
+		#php path
+		export PATH="$(brew --prefix homebrew/core/php@7.1)/bin:$PATH"
 
-#rbenv path
-export PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init -)"
+		#php composer path
+		export PATH=$PATH:~/.composer/vendor/bin/
+
+		#node path
+		export PATH=$HOME/.nodebrew/current/bin:$PATH
+		export PATH=$PATH:./node_modules/.bin
+
+		#rbenv path
+		export PATH=$HOME/.rbenv/bin:$PATH
+		eval "$(rbenv init -)"
+    ;;
+  	linux*)
+    	# ここに Linux 向けの設定
+    ;;
+esac
+
 
 #utility
 
