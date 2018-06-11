@@ -10,7 +10,6 @@ $ chmod +x ~/dotfiles/install.sh
 ## install
 * https://github.com/tkengo/highway
 * https://github.com/sorin-ionescu/prezto
-* vim color-scheme
 * vim :call dein#install()
 
 write my email to ~/.gitconfig.local
