@@ -225,6 +225,7 @@ esac
 	alias dcps='docker-compose ps'
 	alias dclg='docker-compose logs'
 	alias dbash='(){ docker exec -it $1 bash}' # bash login
+	alias dexi='(){ docker exec -it  $1 $2}' # docker exec
 	alias dex='(){ docker exec $1 $2}' # docker exec
 	alias dstopa='docker stop $(docker ps -q)' # stop all
 	alias drma='docker rm $(docker ps -aq)' # container remove all
