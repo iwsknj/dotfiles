@@ -234,3 +234,4 @@ esac
 
 # another
 	alias gulp='nocorrect gulp'
+  alias chromsedev='open /Applications/Google\ Chrome.app/ --args --disable-web-security --user-data-dir'
