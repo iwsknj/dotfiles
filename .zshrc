@@ -40,8 +40,9 @@ fi
 	setopt always_last_prompt       # カーソル位置は保持したままファイル名一覧を順次その場で表示
 }
 
-
+# OS判定
 case ${OSTYPE} in
+	# for mac setting
 	 darwin*)
 
 	 		##### tmux #########
@@ -105,7 +106,8 @@ case ${OSTYPE} in
 				 fi
 			 fi
 			}
-			tmux_automatically_attach_session
+			# tmuxの自動起動設定
+			# tmux_automatically_attach_session
 			##### tmux #########
 
 		 : "sshコマンド補完を~/.ssh/configから行う" && {
@@ -125,13 +127,14 @@ case ${OSTYPE} in
 		export PATH=$PATH:~/.composer/vendor/bin/
 
 		#node path
-		export PATH=$HOME/.nodebrew/current/bin:$PATH
 		export PATH=$PATH:./node_modules/.bin
 
 		#rbenv path
 		export PATH=$HOME/.rbenv/bin:$PATH
 		eval "$(rbenv init -)"
     ;;
+
+		# for linux
   	linux*)
     	# ここに Linux 向けの設定
     ;;
@@ -234,4 +237,4 @@ esac
 
 # another
 	alias gulp='nocorrect gulp'
-  alias chromsedev='open /Applications/Google\ Chrome.app/ --args --disable-web-security --user-data-dir'
+  alias chromedev='open /Applications/Google\ Chrome\ Canary.app/ --args --disable-web-security --user-data-dir'
