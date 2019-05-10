@@ -108,7 +108,7 @@ case ${OSTYPE} in
 			}
 			# tmuxの自動起動設定
 			# tmux_automatically_attach_session
-			##### tmux #########
+			##### end tmux #########
 
 		 : "sshコマンド補完を~/.ssh/configから行う" && {
 		   function _ssh { compadd `fgrep 'Host ' ~/.ssh/*/config ~/.ssh/*/*/config | grep -v '*' | awk '{print $2}' | sort` }
@@ -132,7 +132,20 @@ case ${OSTYPE} in
 		#rbenv path
 		export PATH=$HOME/.rbenv/bin:$PATH
 		eval "$(rbenv init -)"
+
+		# for pyenv
+		export PYENV_ROOT="$HOME/.pyenv"
+		export PATH="$PYENV_ROOT/bin:$PATH"
+		export PIPENV_VENV_IN_PROJECT=1
+		eval "$(pyenv init -)"
+
+		# for golang
+		export GOROOT="$HOME/.goenv"
+		export PATH="$GOROOT/bin:$PATH"
+		eval "$(goenv init -)"
+
     ;;
+
 
 		# for linux
   	linux*)
@@ -156,7 +169,7 @@ esac
 
 
 #vagrant
-
+#
 	alias va='vagrant'
 	alias vst='vagrant status'
 	alias vs='vagrant ssh'

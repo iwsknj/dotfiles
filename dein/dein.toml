@@ -6,38 +6,42 @@
 # Plugins
 
 	# コードを自動的に入力補完してくれる
-	[[plugins]]
-	repo = 'Shougo/neocomplete'
+	# [[plugins]]
+	# repo = 'Shougo/neocomplete'
+	# if = 'has("lua")'
+	# [[plugins]]
+	# repo = 'Shougo/deoplete.nvim'
+	# if = 'has("nvim")'
 
 	# スニペット
-	[[plugins]]
-	repo =  'Shougo/neosnippet'
-	[[plugins]]
-	repo = 'Shougo/neosnippet-snippets'
+	# [[plugins]]
+	# repo =  'Shougo/neosnippet'
+	# [[plugins]]
+	# repo = 'Shougo/neosnippet-snippets'
 
 	# ファイル操作
-	[[plugins]]
-	repo = 'Shougo/unite.vim'
+	# [[plugins]]
+	# repo = 'Shougo/unite.vim'
 
-	[[plugins]]
-	repo = 'Shougo/neomru.vim'
+	# [[plugins]]
+	# repo = 'Shougo/neomru.vim'
 
 	# unite.vimと依存関係にあるらしい
-	[[plugins]]
-	repo = 'Shougo/vimproc.vim'
-	build = 'make'
+	# [[plugins]]
+	# repo = 'Shougo/vimproc.vim'
+	# build = 'make'
 
 	# ファイルをtree表示してくれる
-	[[plugins]]
-	repo =  'scrooloose/nerdtree'
+	# [[plugins]]
+	# repo =  'scrooloose/nerdtree'
 
 	# コメントON/OFFを手軽に実行
-	[[plugins]]
-	repo =  'tomtom/tcomment_vim'
+	# [[plugins]]
+	# repo =  'tomtom/tcomment_vim'
 
 	# シングルクオートとダブルクオートの入れ替え等
-	[[plugins]]
-	repo =  'tpope/vim-surround'
+	# [[plugins]]
+	# repo =  'tpope/vim-surround'
 
 	# インデントに色を付けて見やすくする
 	#[[plugins]]
@@ -46,12 +50,12 @@
 	#	hock_add = 'let g:indent_guides_enable_on_vim_startup = 1'
 
 	# ログファイルを色づけしてくれる
-	[[plugins]]
-	repo =  'vim-scripts/AnsiEsc.vim'
+	# [[plugins]]
+	# repo =  'vim-scripts/AnsiEsc.vim'
 
 	# 行末の半角スペースを可視化
-	[[plugins]]
-	repo =  'bronson/vim-trailing-whitespace'
+	# [[plugins]]
+	# repo =  'bronson/vim-trailing-whitespace'
 
 	# インデントの可視化
 	#[[plugins]]
