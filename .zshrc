@@ -114,6 +114,9 @@ case ${OSTYPE} in
 		   function _ssh { compadd `fgrep 'Host ' ~/.ssh/*/config ~/.ssh/*/*/config | grep -v '*' | awk '{print $2}' | sort` }
 		 }
 
+		#homebrew
+		export PATH=$HOME/.homebrew/bin:$PATH
+
 		#less
 		export LESSCHARSET=utf-8
 
@@ -143,6 +146,10 @@ case ${OSTYPE} in
 		export GOROOT="$HOME/.goenv"
 		export PATH="$GOROOT/bin:$PATH"
 		eval "$(goenv init -)"
+
+		# for flutter
+		export PATH="$PATH:$HOME/flutter/bin"
+		export PATH="$PATH:$HOME/flutter/.pub-cache/bin"
 
     ;;
 
@@ -241,6 +248,7 @@ esac
 	alias dcps='docker-compose ps'
 	alias dclg='docker-compose logs'
 	alias dbash='(){ docker exec -it $1 bash}' # bash login
+	alias dcbash='(){ dc exec $1 bash}'
 	alias dexi='(){ docker exec -it  $1 $2}' # docker exec
 	alias dex='(){ docker exec $1 $2}' # docker exec
 	alias dstopa='docker stop $(docker ps -q)' # stop all
@@ -250,4 +258,7 @@ esac
 
 # another
 	alias gulp='nocorrect gulp'
+	# vueやnuxt使用時にひらくブラウザ
   alias chromedev='open /Applications/Google\ Chrome\ Canary.app/ --args --disable-web-security --user-data-dir'
+	# python + selenium + chrome + docker でのVNCウィンドウを開くよう
+	alias opvnc='open vnc://localhost:5900'
