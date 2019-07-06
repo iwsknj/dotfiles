@@ -3,8 +3,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-
-
 # refere to suin
 # https://suin.io/568
 : "一般的な設定" && {
@@ -116,6 +114,8 @@ case ${OSTYPE} in
 
 		#homebrew
 		export PATH=$HOME/.homebrew/bin:$PATH
+		export HOMEBREW_CACHE=$HOME/.homebrew/caches
+		# export PATH=/Users/KenjiIwase/.homebrew/opt/openssl/bin:$PATH # for openssl
 
 		#less
 		export LESSCHARSET=utf-8
@@ -128,6 +128,13 @@ case ${OSTYPE} in
 
 		#php composer path
 		export PATH=$PATH:~/.composer/vendor/bin/
+
+
+		#nvm （プロジェクトごとにバージョンを変えたい場合は.nvmrcにバージョンを書き nvm useをする
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+		[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
 		#node path
 		export PATH=$PATH:./node_modules/.bin
@@ -143,9 +150,8 @@ case ${OSTYPE} in
 		eval "$(pyenv init -)"
 
 		# for golang
-		export GOROOT="$HOME/.goenv"
-		export PATH="$GOROOT/bin:$PATH"
-		eval "$(goenv init -)"
+		export GOPATH="$HOME/go"
+		export PATH="$PATH:$HOME/go/bin"
 
 		# for flutter
 		export PATH="$PATH:$HOME/flutter/bin"
@@ -262,3 +268,4 @@ esac
   alias chromedev='open /Applications/Google\ Chrome\ Canary.app/ --args --disable-web-security --user-data-dir'
 	# python + selenium + chrome + docker でのVNCウィンドウを開くよう
 	alias opvnc='open vnc://localhost:5900'
+	alias lzd='lazydocker'
