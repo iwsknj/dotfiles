@@ -269,3 +269,5 @@ esac
 	# python + selenium + chrome + docker でのVNCウィンドウを開くよう
 	alias opvnc='open vnc://localhost:5900'
 	alias lzd='lazydocker'
+	# shell relogin
+	alias relogin='exec $SHELL -l'
