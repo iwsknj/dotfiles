@@ -1,5 +1,5 @@
 [user]
-	name = Kenj-I
+	# nameも使い分けてるので.gitconfig.localに書く
 	# emailは.gitconfig.localに書く
 	# スパム対策のため。
 
