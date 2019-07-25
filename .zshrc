@@ -140,6 +140,8 @@ case ${OSTYPE} in
 		export PATH=$PATH:./node_modules/.bin
 
 		#rbenv path
+		# (homebrewをhomedirにinstallしている場合は以下を付けてインストールする)
+		# CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl`" rbenv install [2.3.4]
 		export PATH=$HOME/.rbenv/bin:$PATH
 		eval "$(rbenv init -)"
 
@@ -157,6 +159,8 @@ case ${OSTYPE} in
 		export PATH="$PATH:$HOME/flutter/bin"
 		export PATH="$PATH:$HOME/flutter/.pub-cache/bin"
 
+		# homebrewをhomedirにinstallして、opensslを使うための設定
+		export PATH="/Users/KenjiIwase/.homebrew/opt/openssl/bin:$PATH"
     ;;
 
 
@@ -269,3 +273,4 @@ esac
 	# python + selenium + chrome + docker でのVNCウィンドウを開くよう
 	alias opvnc='open vnc://localhost:5900'
 	alias lzd='lazydocker'
+	alias relogin='exec $SHELL -l'
