@@ -153,7 +153,9 @@ case ${OSTYPE} in
 
 		# for golang
 		export GOPATH="$HOME/go"
-		export PATH="$PATH:$HOME/go/bin"
+		export PATH="$PATH:$GOPATH/go/bin"
+		export PATH="$PATH:/usr/local/go/bin"
+
 
 		# for flutter
 		export PATH="$PATH:$HOME/flutter/bin"
