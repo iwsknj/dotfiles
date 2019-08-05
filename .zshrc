@@ -17,6 +17,11 @@ fi
 }
 
 : "ヒストリ関連の設定" && {
+	HISTFILE=$HOME/.zsh_history # ヒストリファイル名
+  HISTSIZE=10000 # メモリに保存される履歴の件数
+  SAVEHIST=10000 # 履歴ファイルに保存される履歴の件数
+	HISTTIMEFORMAT='%F %T '
+	HISTIGNORE='history:pwd:ls:ls *:ll:w:top:df *'
   setopt hist_ignore_dups               # 直前と同じコマンドをヒストリに追加しない
   setopt hist_ignore_all_dups           # 重複するコマンドは古い法を削除する
   setopt share_history                  # 異なるウィンドウでコマンドヒストリを共有する
@@ -248,6 +253,11 @@ esac
 	alias gr='git rebase'
 
 
+	## config
+	alias glocalname='git config --local user.name'
+	alias glocalemail='git config --local user.email'
+
+
 # Vim
 	alias v='vim'
 	alias vi='vim'
@@ -277,3 +287,4 @@ esac
 	alias lzd='lazydocker'
 	# shell relogin
 	alias relogin='exec $SHELL -l'
+	alias history='history -Di'
