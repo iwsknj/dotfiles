@@ -167,7 +167,7 @@ case ${OSTYPE} in
 		export PATH="$PATH:$HOME/flutter/.pub-cache/bin"
 
 		# homebrewをhomedirにinstallして、opensslを使うための設定
-		export PATH="/Users/KenjiIwase/.homebrew/opt/openssl/bin:$PATH"
+		export PATH="$HOME/.homebrew/opt/openssl/bin:$PATH"
     ;;
 
 
