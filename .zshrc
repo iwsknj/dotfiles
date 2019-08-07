@@ -151,10 +151,10 @@ case ${OSTYPE} in
 		export PIPENV_VENV_IN_PROJECT=1
 		eval "$(pyenv init -)"
 
-		# for golang
-		export GOPATH="$HOME/go"
-		export PATH="$PATH:$GOPATH/go/bin"
-		export PATH="$PATH:/usr/local/go/bin"
+		# for golang (vscodeのcode workspaceの機能を使うと上書きされるからコメントアウト)
+		# export GOPATH="$HOME/go"
+		# export PATH="$PATH:$GOPATH/go/bin"
+		# export PATH="$PATH:/usr/local/go/bin"
 
 
 		# for flutter
@@ -171,7 +171,6 @@ case ${OSTYPE} in
     	# ここに Linux 向けの設定
     ;;
 esac
-
 
 #utility
 
