@@ -240,6 +240,7 @@ esac
 
 	##fetch
 	alias gf='git fetch'
+	alias gfro='git fetch remote origin'
 	alias gcl='git clone'
 	alias gpl='git pull'
 
