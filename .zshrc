@@ -156,7 +156,7 @@ case ${OSTYPE} in
 		export PIPENV_VENV_IN_PROJECT=1
 		eval "$(pyenv init -)"
 
-		# for golang
+		# for golang (vscodeのcode workspaceの機能を使うと上書きされるからコメントアウト)
 		# export GOPATH="$HOME/go"
 		# export PATH="$PATH:$GOPATH/go/bin"
 		# export PATH="$PATH:/usr/local/go/bin"
@@ -176,7 +176,6 @@ case ${OSTYPE} in
     	# ここに Linux 向けの設定
     ;;
 esac
-
 
 #utility
 
@@ -241,6 +240,7 @@ esac
 
 	##fetch
 	alias gf='git fetch'
+	alias gfro='git fetch remote origin'
 	alias gcl='git clone'
 	alias gpl='git pull'
 
