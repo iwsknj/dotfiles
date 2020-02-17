@@ -129,8 +129,8 @@ case ${OSTYPE} in
 		export FUEL_ENV=kenji_dev
 
 		#php path
-		export PATH="/Users/$USER/.homebrew/opt/php@7.2/bin:$PATH"
-		export PATH="/Users/$USER/.homebrew/opt/php@7.2/sbin:$PATH"
+		export PATH="/Users/$USER/.homebrew/opt/php@7.3/bin:$PATH"
+		export PATH="/Users/$USER/.homebrew/opt/php@7.3/sbin:$PATH"
 		export PATH="/usr/local/opt/php@7.3/bin:$PATH"
 		export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 
