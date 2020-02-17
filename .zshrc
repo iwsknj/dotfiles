@@ -278,6 +278,7 @@ esac
 	alias drma='docker rm $(docker ps -aq)' # container remove all
 	alias dps='docker ps --format "table {{.Names}}\t{{.ID}}\t{{.Ports}}\t{{.Status}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}"'
 	alias dpsa='docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Ports}}\t{{.Status}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}} "'
+	alias dlogsf='() {  docker --logs --tail 10 -f $1 }'
 
 # another
 	alias gulp='nocorrect gulp'
