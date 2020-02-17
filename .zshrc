@@ -129,7 +129,8 @@ case ${OSTYPE} in
 		export FUEL_ENV=kenji_dev
 
 		#php path
-		export PATH="$(brew --prefix homebrew/core/php@7.1)/bin:$PATH"
+		export PATH="/Users/KenjiIwase/.homebrew/opt/php@7.2/bin:$PATH"
+		export PATH="/Users/KenjiIwase/.homebrew/opt/php@7.2/sbin:$PATH"
 
 		#php composer path
 		export PATH=$PATH:~/.composer/vendor/bin/
