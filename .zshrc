@@ -129,8 +129,10 @@ case ${OSTYPE} in
 		export FUEL_ENV=kenji_dev
 
 		#php path
-		export PATH="/Users/KenjiIwase/.homebrew/opt/php@7.2/bin:$PATH"
-		export PATH="/Users/KenjiIwase/.homebrew/opt/php@7.2/sbin:$PATH"
+		export PATH="/Users/$USER/.homebrew/opt/php@7.2/bin:$PATH"
+		export PATH="/Users/$USER/.homebrew/opt/php@7.2/sbin:$PATH"
+		export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+		export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 
 		#php composer path
 		export PATH=$PATH:~/.composer/vendor/bin/
@@ -141,6 +143,8 @@ case ${OSTYPE} in
 		[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 		[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+		#nodebrew
+		export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 		#node path
 		export PATH=$PATH:./node_modules/.bin
@@ -169,6 +173,10 @@ case ${OSTYPE} in
 
 		# homebrewをhomedirにinstallして、opensslを使うための設定
 		export PATH="$HOME/.homebrew/opt/openssl/bin:$PATH"
+
+		# mysql
+		export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
     ;;
 
 
