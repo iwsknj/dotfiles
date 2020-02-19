@@ -163,8 +163,8 @@ case ${OSTYPE} in
 
 		# for golang (vscodeのcode workspaceの機能を使うと上書きされるからコメントアウト)
 		# export GOPATH="$HOME/go"
-		# export PATH="$PATH:$GOPATH/go/bin"
-		# export PATH="$PATH:/usr/local/go/bin"
+		export PATH="$PATH:$GOPATH/go/bin"
+		export PATH="$PATH:/usr/local/go/bin"
 
 
 		# for flutter
