@@ -162,7 +162,7 @@ case ${OSTYPE} in
 		eval "$(pyenv init -)"
 
 		# for golang (vscodeのcode workspaceの機能を使うと上書きされるからコメントアウト)
-		# export GOPATH="$HOME/go"
+		export GOPATH="$HOME/go"
 		export PATH="$PATH:$GOPATH/go/bin"
 		export PATH="$PATH:/usr/local/go/bin"
 
