@@ -163,7 +163,7 @@ case ${OSTYPE} in
 
 		# for golang (vscodeのcode workspaceの機能を使うと上書きされるからコメントアウト)
 		export GOPATH="$HOME/go"
-		export PATH="$PATH:$GOPATH/go/bin"
+		export PATH="$PATH:$HOME/go/bin"
 		export PATH="$PATH:/usr/local/go/bin"
 
 
@@ -198,6 +198,9 @@ esac
 	alias su='sudo'
 	alias sui='sudo -i'
 
+	alias relogin='exec $SHELL -l' 	# shell relogin
+	alias history='history -Di'
+	alias ssha='ssh -A'
 
 
 #vagrant
@@ -295,6 +298,3 @@ esac
 	# python + selenium + chrome + docker でのVNCウィンドウを開くよう
 	alias opvnc='open vnc://localhost:5900'
 	alias lzd='lazydocker'
-	# shell relogin
-	alias relogin='exec $SHELL -l'
-	alias history='history -Di'

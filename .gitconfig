@@ -1,6 +1,6 @@
 [user]
 	# nameも使い分けてるので.gitconfig.localに書く
-	# emailは.gitconfig.localに書く
+	# emailも.gitconfig.localに書く
 	# スパム対策のため。
 
 [include]
@@ -25,7 +25,7 @@
 
 [mergetool "sourcetree"]
 
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [color]
