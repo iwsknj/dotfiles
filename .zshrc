@@ -220,6 +220,10 @@ esac
 	alias vbi='vagrant box init'
 	alias vv='vagrant -v'
 
+# tmux
+	alias t='tmux'
+	alias treload='t source ~/.tmux.conf'
+
 
 #Git
 
