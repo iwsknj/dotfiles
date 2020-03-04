@@ -201,7 +201,7 @@ esac
 	alias relogin='exec $SHELL -l' 	# shell relogin
 	alias history='history -Di'
 	alias ssha='ssh -A'
-	alias sjis = 'iconv -f SJIS' # Shift-jisのcsvを文字化けしないように出力
+	alias sjis='iconv -f SJIS' # Shift-jisのcsvを文字化けしないように出力
 
 
 #vagrant
