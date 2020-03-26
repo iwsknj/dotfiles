@@ -222,7 +222,7 @@ esac
 	alias vv='vagrant -v'
 
 # tmux
-	alias t='tmux'
+	alias tm='tmux'
 	alias treload='t source ~/.tmux.conf'
 
 
@@ -303,3 +303,4 @@ esac
 	# python + selenium + chrome + docker でのVNCウィンドウを開くよう
 	alias opvnc='open vnc://localhost:5900'
 	alias lzd='lazydocker'
+	alias art='php artisan'
