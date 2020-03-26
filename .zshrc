@@ -304,3 +304,6 @@ esac
 	alias opvnc='open vnc://localhost:5900'
 	alias lzd='lazydocker'
 	alias art='php artisan'
+
+# localファイルを読み込む
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
