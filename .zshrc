@@ -275,6 +275,12 @@ esac
 	alias glocalemail='git config --local user.email'
 
 
+# PHP
+	alias art='php artisan'
+
+# JS,TS
+	alias tsn='ts-node'
+
 # Vim
 	alias v='vim'
 	alias vi='vim'
@@ -303,7 +309,6 @@ esac
 	# python + selenium + chrome + docker でのVNCウィンドウを開くよう
 	alias opvnc='open vnc://localhost:5900'
 	alias lzd='lazydocker'
-	alias art='php artisan'
 
 # localファイルを読み込む
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
