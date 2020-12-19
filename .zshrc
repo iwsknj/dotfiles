@@ -177,6 +177,9 @@ case ${OSTYPE} in
 		# mysql
 		export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
+		#docker
+		export DOCKER_CONTENT_TRUST=1
+
     ;;
 
 
@@ -312,3 +315,9 @@ esac
 
 # localファイルを読み込む
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/KenjiIwase/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/KenjiIwase/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/KenjiIwase/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/KenjiIwase/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

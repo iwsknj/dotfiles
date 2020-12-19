@@ -16,12 +16,14 @@
 	ignorecase = false
 
 [merge]
-	## ff => --no--ff  常にpullの時などにマージコミットが作成される
-    # ff = false
+    ff = false # マージコミットを作成する
+
+[pull]
+    ff = only # マージコミットをpullのときは作成しない
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 
 [mergetool "sourcetree"]
 
