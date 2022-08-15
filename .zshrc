@@ -1,54 +1,21 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+### zinit ###
+# typeset -gAH ZINIT
+# ZINIT[HOME_DIR]="$XDG_DATA_HOME/zinit"
+# ZINIT[ZCOMPDUMP_PATH]="$XDG_STATE_HOME/zcompdump"
+# source "${ZINIT[HOME_DIR]}/bin/zinit.zsh"
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh" # TODO: 消して上の読み込みでできるようにする
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# refere to suin
-# https://suin.io/568
-: "一般的な設定" && {
-  autoload -U compinit && compinit      # 補完機能の強化
-  setopt correct                        # 入力しているコマンド名が間違っている場合にもしかして：を出す。
-  setopt nobeep                         # ビープを鳴らさない
-  setopt no_tify                        # バックグラウンドジョブが終了したらすぐに知らせる。
-  unsetopt auto_menu                    # タブによるファイルの順番切り替えをしない
-  setopt auto_pushd                     # cd -[tab]で過去のディレクトリにひとっ飛びできるようにする
-  setopt auto_cd                        # ディレクトリ名を入力するだけでcdできるようにする
-  setopt interactive_comments           # コマンドラインでも # 以降をコメントと見なす
-}
-
-: "ヒストリ関連の設定" && {
-	HISTFILE=$HOME/.zsh_history # ヒストリファイル名
-  HISTSIZE=10000 # メモリに保存される履歴の件数
-  SAVEHIST=10000 # 履歴ファイルに保存される履歴の件数
-	HISTTIMEFORMAT='%F %T '
-	HISTIGNORE='history:pwd:ls:ls *:ll:w:top:df *'
-  setopt hist_ignore_dups               # 直前と同じコマンドをヒストリに追加しない
-  setopt hist_ignore_all_dups           # 重複するコマンドは古い法を削除する
-  setopt share_history                  # 異なるウィンドウでコマンドヒストリを共有する
-  setopt hist_no_store                  # historyコマンドは履歴に登録しない
-  setopt hist_reduce_blanks             # 余分な空白は詰めて記録
-  setopt hist_verify                    # `!!`を実行したときにいきなり実行せずコマンドを見せる
-}
-
-: "補完の設定" && {
-	setopt auto_param_slash         # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
-	setopt mark_dirs                # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
-	setopt list_types               # 補完候補一覧でファイルの種別を識別マーク表示 (訳注:ls -F の記号)
-	setopt auto_menu                # 補完キー連打で順に補完候補を自動で補完
-	setopt auto_param_keys          # カッコの対応などを自動的に補完
-	setopt interactive_comments     # コマンドラインでも # 以降をコメントと見なす
-	setopt magic_equal_subst        # コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
-
-	setopt complete_in_word         # 語の途中でもカーソル位置で補完
-	setopt always_last_prompt       # カーソル位置は保持したままファイル名一覧を順次その場で表示
-}
+# # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# # Initialization code that may require console input (password prompts, [y/n]
+# # confirmations, etc.) must go above this block; everything else may go below.
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # OS判定
 case ${OSTYPE} in
@@ -196,138 +163,25 @@ case ${OSTYPE} in
     ;;
 esac
 
-#utility
-
-	alias 1='cd ..'
-	alias 2='cd ../..'
-	alias 3='cd ../../..'
-	alias 4='cd ../../../..'
-	alias 5='cd ../../../../..'
-	alias 6='cd ../../../../../..'
-
-	alias su='sudo'
-	alias sui='sudo -i'
-
-	alias relogin='exec $SHELL -l' 	# shell relogin
-	alias history='history -Di'
-	alias ssha='ssh -A'
-	alias sjis='iconv -f SJIS' # Shift-jisのcsvを文字化けしないように出力
 
 
-#vagrant
-#
-	alias va='vagrant'
-	alias vst='vagrant status'
-	alias vs='vagrant ssh'
-	alias vr='vagrant reload'
-	alias vra='vagrant rsync-auto'
-	alias vu='vagrant up'
-	alias vh='vagrant halt'
-	alias vsus='vagrant suspend'
-	alias vpi='vagrant plugin install'
-	alias vpl='vagrant plugin list'
-	alias vbr='vagrant box remove'
-	alias vbl='vagrant box list'
-	alias vbi='vagrant box init'
-	alias vv='vagrant -v'
-
-# tmux
-	alias tm='tmux'
-	alias treload='t source ~/.tmux.conf'
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
 
-#Git
-
-	alias graph="log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short"
-
-	alias g='git'
-	alias gg='git graph'
-	alias gl='git log'
-	alias gs='git status'
-	alias gi='git init'
-
-	##branch
-	alias gb='git branch'
-	alias gch='git checkout'
-	alias gchb='git checkout -b'
-	alias gbd='git branch --delete'
-	alias gba='git branch --all'
-
-	##comit
-	alias ga='git add'
-	alias gaa='git add .'
-	alias gc='git commit'
-	alias gcm='git commit -m'
-	alias gca='git commit --amend -m'
-
-	##merge
-	alias gm='git merge'
-	alias gmnc='git merge --no-commit'
-	alias gmnf='git merge --no-ff'
-
-	##fetch
-	alias gf='git fetch'
-	alias gfro='git fetch remote origin'
-	alias gcl='git clone'
-	alias gpl='git pull'
-
-	##push
-	alias gps='git push'
-	alias gpsf='git push --force'
-	alias gpsa='git push --all'
-
-	##rebase
-	alias gr='git rebase'
+# Load powerlevel10k theme
+zinit ice depth"1" # git clone depth
+zinit light romkatv/powerlevel10k
 
 
-	## config
-	alias glocalname='git config --local user.name'
-	alias glocalemail='git config --local user.email'
+# plugin & other setting
+zinit wait lucid as null for \
+    atinit'source "/Users/kenjiiwase/dotfiles/.zshrc.lazy"' \
+    @'zdharma-continuum/null'
+		# atinit'source "$ZDOTDIR/.zshrc.lazy"' \
 
-
-# PHP
-	alias art='php artisan'
-
-# JS,TS
-	alias tsn='ts-node'
-
-# Vim
-	alias v='vim'
-	alias vi='vim'
-
-# Docker
-	alias d='docker'
-	alias dc='docker-compose'
-	alias dps='docker ps'
-	alias dpsa='docker ps -a'
-	alias dcps='docker-compose ps'
-	alias dclg='docker-compose logs'
-	alias dbash='(){ docker exec -it $1 bash}' # bash login
-	alias dcbash='(){ dc exec $1 bash}'
-	alias dexi='(){ docker exec -it  $1 $2}' # docker exec
-	alias dex='(){ docker exec $1 $2}' # docker exec
-	alias dstopa='docker stop $(docker ps -q)' # stop all
-	alias drma='docker rm $(docker ps -aq)' # container remove all
-	alias dps='docker ps --format "table {{.Names}}\t{{.ID}}\t{{.Ports}}\t{{.Status}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}"'
-	alias dpsa='docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Ports}}\t{{.Status}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}} "'
-	alias dlogsf='() {  docker --logs --tail 10 -f $1 }'
-
-# another
-	alias gulp='nocorrect gulp'
-	# vueやnuxt使用時にひらくブラウザ
-  alias chromedev='open /Applications/Google\ Chrome\ Canary.app/ --args --disable-web-security --user-data-dir'
-	# python + selenium + chrome + docker でのVNCウィンドウを開くよう
-	alias opvnc='open vnc://localhost:5900'
-	alias lzd='lazydocker'
-
-# localファイルを読み込む
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/KenjiIwase/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/KenjiIwase/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/KenjiIwase/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/KenjiIwase/google-cloud-sdk/completion.zsh.inc'; fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
