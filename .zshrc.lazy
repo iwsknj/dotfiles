@@ -57,6 +57,9 @@ if [ -f '/Users/KenjiIwase/google-cloud-sdk/completion.zsh.inc' ]; then . '/User
 ### Alias ###
 
 # utility #
+alias ls='ls -G'
+alias ll='ls -lh'
+alias la='ll -A'
 alias 1='cd ..'
 alias 2='cd ../..'
 alias 3='cd ../../..'

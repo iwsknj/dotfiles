@@ -136,14 +136,8 @@ case ${OSTYPE} in
 		eval "$(pyenv init -)"
 
 		# for golang (vscodeのcode workspaceの機能を使うと上書きされるからコメントアウト)
-		export GOPATH=$HOME/go
-		export PATH=$GOPATH/bin:$PATH
-
-		export GOENV_ROOT=$HOME/.goenv
-		export PATH=$GOENV_ROOT/bin:$PATH
-		export PATH=$HOME/.goenv/bin:$PATH
-		eval "$(goenv init -)"
-
+		# export GOPATH=$HOME/go
+		# export PATH=$GOPATH/bin:$PATH
 
 		# for flutter
 		export PATH="$PATH:$HOME/flutter/bin"
@@ -185,3 +179,5 @@ zinit wait lucid as null for \
     @'zdharma-continuum/null'
 		# atinit'source "$ZDOTDIR/.zshrc.lazy"' \
 
+# Shopify Hydrogen alias to local projects
+alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
