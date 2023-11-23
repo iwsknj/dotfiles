@@ -15,20 +15,5 @@
 	editor = vim
 	ignorecase = false
 
-[merge]
-    ff = false # マージコミットを作成する
-
-[pull]
-    ff = only # マージコミットをpullのときは作成しない
-
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[mergetool "sourcetree"]
-
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
 [color]
 	ui = true
