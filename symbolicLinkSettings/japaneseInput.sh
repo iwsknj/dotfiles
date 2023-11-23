@@ -1,1 +1,1 @@
-ln -s /Users/$USER/Dropbox/JapaneseInput /Users/$USER/Library/Application\ Support/Google
+ln -s $HOME/Dropbox/JapaneseInput $HOME/Library/Application\ Support/Google
