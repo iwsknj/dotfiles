@@ -1,16 +1,18 @@
 right_format = """
+$nodejs
 $cmd_duration
 """
 
 scan_timeout = 10
 add_newline = false
+
 [character]
 error_symbol = "[❯](bold red)"
 success_symbol = "[❯](bold green)"
 
 [directory]
-truncation_length = 5
-truncate_to_repo = false
+truncation_length = 3
+truncate_to_repo = true
 truncation_symbol = "…/"
 
 [aws]
@@ -31,19 +33,7 @@ format = '\([$symbol$branch(:$remote_branch)]($style)\)'
 style_user = "white bold"
 style_root = "red bold"
 format = "[$user]($style) "
-disabled = false
-show_always = true
-
-[nodejs]
-disabled = true
-
-[gcloud]
-disabled = true
-
-[package]
-disabled = true
 
 
 [cmd_duration]
-disabled = true
 format = "took [$duration]($style) "

@@ -20,6 +20,7 @@ alias sjis='iconv -f SJIS' # Shift-jisのcsvを文字化けしないように出
 # tmux #
 alias tm='tmux'
 alias treload='t source ~/.tmux.conf'
+alias ide="sh $HOME/dotfiles/tmux/ide.sh"
 
 # Git #
 alias graph="log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short"
@@ -76,3 +77,9 @@ alias drma='docker rm $(docker ps -aq)' # container remove all
 alias dps='docker ps --format "table {{.Names}}\t{{.ID}}\t{{.Ports}}\t{{.Status}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}"'
 alias dpsa='docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Ports}}\t{{.Status}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}} "'
 alias dlogsf='() {  docker --logs --tail 10 -f $1 }'
+
+
+# Neovim
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
