@@ -7,9 +7,9 @@ require 'options'
 require 'keybinds'
 require 'appearance'
 require 'extensions'
-require 'color_scheme' -- プラグインを読み込んでから
+require 'color_scheme' -- テーマをプラグインとして読み込んでるから読み込みが終わってから読み込む
 
--- netrw
+-- netrw（デフォルトのファイラー）を読み込まない
 vim.api.nvim_set_var('loaded_netrw', 1)
 vim.api.nvim_set_var('loaded_netrwPlugin', 1)
 

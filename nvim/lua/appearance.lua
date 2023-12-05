@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 
+-- ファイルごとのインデントの設定
 local function set_tab_spaces(buf, num_spaces, expandtab)
   vim.api.nvim_buf_set_option(buf, 'tabstop', num_spaces)
   vim.api.nvim_buf_set_option(buf, 'shiftwidth', num_spaces)
@@ -30,13 +31,13 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
     }
 
     if four_space_file_types[file_type] then
-      -- 特定のファイルタイプ（PythonやPHP）の場合、タブをスペース4つに設定
+      -- 特定のファイルタイプ（PythonやPHP）の場合、インデントをスペース4つに設定
       set_tab_spaces(buf, 4, true)
     elseif file_type == 'go' then
-      -- Goの場合、タブをスペース4つに設定
+      -- Goの場合、インデントをタブでスペース4つ分に設定
       set_tab_spaces(buf, 4, false)
     else
-      -- デフォルト設定: タブをスペース2つに設定
+      -- デフォルト設定: インデントをスペース2つに設定
       set_tab_spaces(buf, 2, true)
     end
   end
