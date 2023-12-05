@@ -21,6 +21,7 @@ alias sjis='iconv -f SJIS' # Shift-jisのcsvを文字化けしないように出
 alias tm='tmux'
 alias treload='t source ~/.tmux.conf'
 alias ide="sh $HOME/dotfiles/tmux/ide.sh"
+alias tcheat="cat $HOME/dotfiles/tmux/cheatSheet.md"
 
 # Git #
 alias graph="log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short"

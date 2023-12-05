@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+vim.fn.system({
+  "git",
+"clone",
+"--filter=blob:none",
+"https://github.com/folke/lazy.nvim.git",
+"--branch=stable", -- latest stable release
+lazypath,
+})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -27,7 +27,7 @@ local is_vscode = vim.g.vscode == 1
 local common_plugins = {
   -- 両方で使うプラグインを列挙
   {
-    'phaazon/hop.nvim',
+    'phaazon/hop.nvim', -- 単語や行にキーワードで移動する
     branch = 'v2',
     config = function()
       require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
@@ -37,10 +37,10 @@ local common_plugins = {
     end
   },
   {
-    'tpope/vim-commentary'
+    'tpope/vim-commentary' -- 行ごとにコメントアウトする
   },
   {
-    "kylechui/nvim-surround",
+    "kylechui/nvim-surround", -- クォーテーションやカッコの操作
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
@@ -48,7 +48,7 @@ local common_plugins = {
             -- Configuration here, or leave empty to use defaults
         })
     end
-}
+  },
 }
 
 local vscode_plugins = {
@@ -62,9 +62,25 @@ local neovim_plugins = {
       lazy = false,
       priority = 1000,
       opts = {},
-    }
+    },
+    {
+        'nvim-lualine/lualine.nvim', -- vimのステータスラインの管理
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+          require('lualine').setup()
+        end
+      },
+    -- {
+-- "lukas-reineke/indent-blankline.nvim",
+-- main = 'ibl',
+  -- opts = {
+    -- indent = {
+    --   char = "╎",
+    --   tab_char = "|",
+    -- },
+  -- },
+-- }
 }
-
 require('lazy').setup(
   merge_tables(common_plugins, is_vscode and vscode_plugins or neovim_plugins)
 )
