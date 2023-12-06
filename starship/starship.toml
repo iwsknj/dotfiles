@@ -1,8 +1,4 @@
-right_format = """
-$nodejs
-$cmd_duration
-"""
-
+right_format = """$aws$gcloud$nodejs$cmd_duration"""
 scan_timeout = 10
 add_newline = false
 
@@ -16,8 +12,11 @@ truncate_to_repo = true
 truncation_symbol = "…/"
 
 [aws]
-format = 'on [$symbol($profile )(\($region\) )]($style)'
+format = 'AWS on [($profile )(\($region\) )]($style)'
 style = "bold blue"
+
+[gcloud]
+format = 'GCP on [$account(@$domain)(\($project\))]($style) '
 
 # [custom.arch]
 # command = "uname -m"

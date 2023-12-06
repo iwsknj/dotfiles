@@ -58,7 +58,7 @@ local vscode_plugins = {
 local neovim_plugins = {
     -- Neovimでのみ使うプラグインを列挙
     {
-      "folke/tokyonight.nvim",
+      "folke/tokyonight.nvim", -- カラースキーム
       lazy = false,
       priority = 1000,
       opts = {},
@@ -80,6 +80,16 @@ local neovim_plugins = {
     -- },
   -- },
 -- }
+--
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  },
+  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
 }
 require('lazy').setup(
   merge_tables(common_plugins, is_vscode and vscode_plugins or neovim_plugins)
