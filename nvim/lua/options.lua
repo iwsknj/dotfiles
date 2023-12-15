@@ -32,5 +32,6 @@ vim.o.undodir = vim.fn.stdpath('cache') .. '/undo' -- undoファイルの保存�
 
 -- indent
 vim.o.list = true -- 特殊文字（タブやスペース）を可視化します。
-vim.opt.listchars = {tab='»-', space='⋅'}
+vim.opt.listchars = {eol='↲'}
+-- vim.opt.listchars = {tab='»-', space='⋅', eol='↲'}
 -- vim.opt.listchars = {tab='»-', space='⋅', trail='-', eol='¬', extends='»', precedes='«', nbsp='%'}

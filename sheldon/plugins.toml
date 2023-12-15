@@ -34,6 +34,7 @@ use = ["zsh-history-substring-search.zsh"]
 github = "jeffreytse/zsh-vi-mode"
 
 
+# 自前のzsh設定ファイルの読み込み
 [plugins.dotfiles-defers]
 # https://ktrysmt.github.io/blog/migrate-zinit-to-sheldon/
 local = "~/dotfiles/zsh"
@@ -45,3 +46,4 @@ apply = ["defer"]
 local = "~/dotfiles/zsh"
 use = ["sync.zsh"]
 apply = ["source"]
+

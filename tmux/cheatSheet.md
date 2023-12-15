@@ -10,4 +10,5 @@ window一覧表示: pre + w
 window破棄: pre + &
 window移動: pre + n or p
 window移動（番号）: pre + 番号
+window名前変更 : pre + ,
 
