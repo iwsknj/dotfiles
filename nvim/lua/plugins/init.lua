@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-function merge_tables(t1, t2)
+local function merge_tables(t1, t2)
     local merged = {}
     for _, v in ipairs(t1) do
         table.insert(merged, v)
@@ -70,7 +70,21 @@ local neovim_plugins = {
           require('lualine').setup()
         end
     },
-    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+    {
+        'akinsho/bufferline.nvim',
+        version = "*",
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        event = "VeryLazy",
+        keys = {
+            { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
+            { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
+        },
+        opts = {
+            options = {
+                mode = "tabs",
+            },
+        },
+    },
     {
          "lukas-reineke/indent-blankline.nvim",
          main = 'ibl',
@@ -83,6 +97,17 @@ local neovim_plugins = {
          show_end = true,
          smart_indent_cap = true,
          priority = 2,
+    },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {} -- this is equalent to setup({}) function
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
     },
     {
         "nvim-telescope/telescope.nvim",
@@ -261,36 +286,42 @@ local neovim_plugins = {
     {
         "nvim-treesitter/nvim-treesitter", -- tree-sitterを使ってコードをハイライトするプラグイン
         build = ":TSUpdate",
-        ensure_installed = {
-            "c",
-            "lua",
-            "vim",
-            "vimdoc",
-            "query",
-            -- ↑この5つはデフォルトで入れた方がいいやつ
-            "php",
-            "markdown",
-            "xml",
-            "yaml",
-            "typescript",
-            "javascript",
-            "json",
-            "toml",
-            "sql",
-            "go",
-            "bash",
-            "jsx",
-            "tsx",
-        },
-        auto_install = true,
-        highlight = {
-            enable = true,
-            disable = {},
-        },
-        indent = {
-            enable = true,
-            disable = {},
-        },
+
+        config = function()
+            local configs = require("nvim-treesitter.configs")
+            configs.setup({
+                ensure_installed = {
+                    "c",
+                    "lua",
+                    "vim",
+                    "vimdoc",
+                    "query",
+                    -- ↑この5つはデフォルトで入れた方がいいやつ
+                    "php",
+                    "markdown",
+                    "xml",
+                    "yaml",
+                    "typescript",
+                    "javascript",
+                    "json",
+                    "toml",
+                    "sql",
+                    "go",
+                    "bash",
+                },
+                sync_install = false,
+                auto_install = true,
+                highlight = {
+                    enable = true,
+                },
+                indent = {
+                    enable = true,
+                    disable = {},
+                },
+                autotag = {
+                }
+            })
+        end
     },
     {
         "neovim/nvim-lspconfig",
@@ -347,7 +378,18 @@ local on_attach = function(client, bufnr)
 end
 
 require("mason").setup()
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup {
+    ensure_installed = {
+        "bashls",
+        "lua_ls",
+        "dockerls",
+        "docker_compose_language_service",
+        "cssls",
+        "html",
+        "intelephense",
+        "tailwindcss",
+    },
+}
 require("mason-lspconfig").setup_handlers {
     function (server_name)
         require("lspconfig")[server_name].setup {
@@ -355,9 +397,21 @@ require("mason-lspconfig").setup_handlers {
         }
     end,
 }
+require("lspconfig").lua_ls.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {
+                  'vim',
+                  'require'
+                },
+            },
+        }
+    },
+}
 
 -- Indent blank lineの設定
-
 local highlight = {
     "Gray",
 }
