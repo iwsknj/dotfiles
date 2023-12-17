@@ -297,17 +297,24 @@ local neovim_plugins = {
                     "vimdoc",
                     "query",
                     -- ↑この5つはデフォルトで入れた方がいいやつ
-                    "php",
-                    "markdown",
-                    "xml",
-                    "yaml",
-                    "typescript",
+                    "bash",
+                    "css",
+                    "gitignore",
+                    "go",
+                    "go",
+                    "graphql",
+                    "http",
                     "javascript",
                     "json",
-                    "toml",
+                    "markdown",
+                    "php",
+                    "scss",
                     "sql",
-                    "go",
-                    "bash",
+                    "sql",
+                    "toml",
+                    "typescript",
+                    "xml",
+                    "yaml",
                 },
                 sync_install = false,
                 auto_install = true,
@@ -322,6 +329,9 @@ local neovim_plugins = {
                 }
             })
         end
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
     },
     {
         "neovim/nvim-lspconfig",
@@ -345,6 +355,16 @@ local neovim_plugins = {
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-buffer" },
     { "saadparwaiz1/cmp_luasnip" },
+    {
+        'nvimdev/lspsaga.nvim',
+        config = function()
+            require('lspsaga').setup({})
+        end,
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter', -- optional
+            'nvim-tree/nvim-web-devicons',     -- optional
+        },
+    }
 }
 
 require('lazy').setup(
@@ -380,14 +400,22 @@ end
 require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_installed = {
-        "bashls",
-        "lua_ls",
-        "dockerls",
-        "docker_compose_language_service",
-        "cssls",
-        "html",
-        "intelephense",
-        "tailwindcss",
+        "bash-language-server", -- bash lsp
+        "css-lsp", -- css lsp
+        "docker_compose_language_service", -- docker composer file lsp
+        "dockerfile-language-server", -- docker file lsp
+        "html-lsp", -- html lsp
+        "intelephense", -- php lsp
+        "json-lsp", -- json lsp
+        "lua-language-server",
+        "luaformatter", -- lua formatter
+        "php-cs-fixer", -- php fomatter
+        "phpmd", -- php linter
+        "prittier", -- javascript linter
+        "selene", -- lua linter
+        "shellcheck", -- shell lint
+        "tailwindcss-language-server", -- tailwind lsp
+        "tsserver", -- typescript lsp
     },
 }
 require("mason-lspconfig").setup_handlers {
