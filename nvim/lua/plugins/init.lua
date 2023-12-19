@@ -58,6 +58,13 @@ local vscode_plugins = {
 local neovim_plugins = {
     -- Neovimでのみ使うプラグインを列挙
     {
+        "github/copilot.vim",
+        lazy = false,
+        config = function()
+            vim.g.copilot_node_command = "~/.nvm/versions/node/v20.10.0/bin/node"
+        end
+    },
+    {
          "folke/tokyonight.nvim", -- カラースキーム
          lazy = false,
          priority = 1000,
@@ -107,6 +114,7 @@ local neovim_plugins = {
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup()
+            require("scrollbar.handlers.gitsigns").setup()
         end
     },
     {
@@ -348,6 +356,7 @@ local neovim_plugins = {
         end,
     },
     { "williamboman/mason-lspconfig.nvim" },
+    { "WhoIsSethDaniel/mason-tool-installer.nvim"},
 
     { "L3MON4D3/LuaSnip" },
 
@@ -364,7 +373,9 @@ local neovim_plugins = {
             'nvim-treesitter/nvim-treesitter', -- optional
             'nvim-tree/nvim-web-devicons',     -- optional
         },
-    }
+    },
+
+    { "petertriho/nvim-scrollbar" }
 }
 
 require('lazy').setup(
@@ -398,7 +409,7 @@ local on_attach = function(client, bufnr)
 end
 
 require("mason").setup()
-require("mason-lspconfig").setup {
+require('mason-tool-installer').setup {
     ensure_installed = {
         "bash-language-server", -- bash lsp
         "css-lsp", -- css lsp
@@ -408,15 +419,16 @@ require("mason-lspconfig").setup {
         "intelephense", -- php lsp
         "json-lsp", -- json lsp
         "lua-language-server",
-        "luaformatter", -- lua formatter
+        "stylua", -- lua formatter
         "php-cs-fixer", -- php fomatter
         "phpmd", -- php linter
-        "prittier", -- javascript linter
+        "prettier", -- javascript linter
         "selene", -- lua linter
         "shellcheck", -- shell lint
         "tailwindcss-language-server", -- tailwind lsp
-        "tsserver", -- typescript lsp
+        "typescript-language-server", -- typescript lsp
     },
+    auto_update = false,
 }
 require("mason-lspconfig").setup_handlers {
     function (server_name)
@@ -461,4 +473,20 @@ require("ibl").setup {
 -- bufferlineの設定
 vim.opt.termguicolors = true
 require("bufferline").setup{}
+
+-- petertriho/nvim-scrollbarの設定
+local colors = require("tokyonight.colors").setup()
+require("scrollbar").setup({
+    handle = {
+        color = colors.bg_highlight,
+    },
+    marks = {
+        Search = { color = colors.orange },
+        Error = { color = colors.error },
+        Warn = { color = colors.warning },
+        Info = { color = colors.info },
+        Hint = { color = colors.hint },
+        Misc = { color = colors.purple },
+    }
+})
 
