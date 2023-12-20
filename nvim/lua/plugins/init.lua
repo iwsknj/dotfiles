@@ -118,6 +118,33 @@ local neovim_plugins = {
         end
     },
     {
+        "dinhhuy258/git.nvim",
+        event = "BufReadPre",
+        opts = {
+            keymaps = {
+                -- Open blame window
+                blame = "<Leader>gb",
+                -- Open file/folder in git repository
+                browse = "<Leader>go",
+            },
+        },
+        config = function()
+            require('git').setup()
+        end,
+    },
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+          "nvim-lua/plenary.nvim",         -- required
+          "sindrets/diffview.nvim",        -- optional - Diff integration
+
+          -- Only one of these is needed, not both.
+          "nvim-telescope/telescope.nvim", -- optional
+          -- "ibhagwan/fzf-lua",              -- optional
+        },
+        config = true
+    },
+    {
         "nvim-telescope/telescope.nvim",
 
         dependencies = {
