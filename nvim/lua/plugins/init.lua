@@ -145,6 +145,11 @@ local neovim_plugins = {
         config = true
     },
     {
+        'akinsho/git-conflict.nvim',
+        version = "*",
+        config = true,
+    },
+    {
         "nvim-telescope/telescope.nvim",
 
         dependencies = {

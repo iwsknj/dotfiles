@@ -1,12 +1,14 @@
-# Neovimのチートシート
+# Neovimチートシート
+
+Neovimのキーバインドのメモや使っているプラグインのメモを書いています
 
 ## デフォルトの機能
 
 タブ
 `tn` : タブを開く
-`te` : タブを開く
-`<tab>` : 次のタブ
-`<s-tab>` : 前のタブ
+`tc` : タブを閉じる
+`<tab>` : 次のタブ（`akinsho/bufferline.nvim`のコマンドをマッピングしている`）
+`<s-tab>` : 前のタブ（`akinsho/bufferline.nvim`のコマンドをマッピングしている`）
 `:tabs` : タブ一覧を開く
 
 画面分割
@@ -70,4 +72,35 @@
 `;b` : 現在のディレクトリからファイルをブラウジング
     `N` : 作成
     `R` : リネーム
+
+
+## Git関連
+
+
+### NeogitOrg/neogit
+
+`:Neogit` : これでNeogitのgit操作インターフェイスを表示。主にコミットやマージなど
+
+### dinhhuy258/git.nvim
+
+`:Git` : これでgitの操作ができる
+`:Git help` : ヘルプを表示
+
+`<Leader>gb`: blame windowの表示
+`<Leader>go`: 開いているファイルのgit repositoryのページを開く
+
+### lewis6991/gitsigns.nvim
+
+ファイル内の変更などをビジュアライズしてくれるやつ
+それ以外にもいろんな機能がある
+
+### akinsho/git-conflict.nvim
+
+コンフリクト解消するプラグイン
+
+
+## Copilot
+
+NodeJSのバージョンを`20.10.0`に設定しているので、`nvm`でダウンロードしておく
+`:Copilot setup`を実行して連携すれば使えるようになる
 

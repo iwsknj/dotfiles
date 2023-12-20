@@ -19,7 +19,7 @@ keymap.set("n", "-", "<C-x>")
 -- タブ
 keymap.set("n", "tn", ":tabnew<CR>") -- 開く
 keymap.set("n", "te", ":tabedit<CR>") -- 開く
-keymap.set("n", "tc", ":tabclose<CR>") -- 開く
+keymap.set("n", "tc", ":tabclose<CR>") -- 閉じる
 keymap.set("n", "<tab>", ":tabnext<CR>") -- 次のタブ
 keymap.set("n", "<s-tab>", ":tabprev<CR>") -- 前のタブ
 
