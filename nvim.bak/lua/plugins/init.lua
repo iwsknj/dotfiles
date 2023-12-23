@@ -341,7 +341,6 @@ local neovim_plugins = {
                     "css",
                     "gitignore",
                     "go",
-                    "go",
                     "graphql",
                     "http",
                     "javascript",
@@ -353,6 +352,7 @@ local neovim_plugins = {
                     "sql",
                     "toml",
                     "typescript",
+                    "tsx",
                     "xml",
                     "yaml",
                 },
@@ -389,14 +389,62 @@ local neovim_plugins = {
     },
     { "williamboman/mason-lspconfig.nvim" },
     { "WhoIsSethDaniel/mason-tool-installer.nvim"},
+    {
+        "nvimtools/none-ls.nvim",
+        dependencies = {"nvim-lua/plenary.nvim"},
+        -- config = function()
+        --     local nls = require("null-ls")
+        --     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+        --     local lsp_formatting = function()
+        --         vim.lsp.buf.format({
+        --             filter = function(client)
+        --                 -- apply whatever logic you want (in this example, we'll only use null-ls)
+        --                 return client.name == "null-ls"
+        --                 -- return true
+        --             end,
+        --             async = false
+        --         })
+        --     end
+        --     nls.setup({
+        --         sources = {
+        --             nls.builtins.formatting.prettier.with({
+        --                 filetypes = {
+        --                     "javascript", "javascriptreact", "typescript",
+        --                     "typescriptreact", "vue", "css", "scss", "less", "json",
+        --                     "jsonc", "markdown", "graphql", "handlebars", "svelte",
+        --                     "html", "astro",
+        --                 }
+        --             })
+        --         },
+        --         on_attach = function(client, bufnr)
+        --             if client.supports_method("textDocument/formatting") then
+        --                 vim.api.nvim_clear_autocmds({group = augroup, buffer = bufnr})
+        --                 vim.api.nvim_create_autocmd("BufWritePre", {
+        --                     group = augroup,
+        --                     buffer = bufnr,
+        --                     callback = function()
+        --                         lsp_formatting(bufnr)
+        --                     end
+        --                 })
+        --             end
+        --         end,
+        --     })
+        -- end,
+    },
 
     { "L3MON4D3/LuaSnip" },
 
     { "hrsh7th/nvim-cmp" }, -- 補完エンジン
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-cmdline" }, -- コマンドライン補完
+    { "hrsh7th/cmp-path" }, -- ファイルパス補完
+    { "hrsh7th/cmp-vsnip" },
+    { "hrsh7th/vim-vsnip" },
     { "saadparwaiz1/cmp_luasnip" },
+
     {
+        -- LSP関連の機能をきれいなUIで使えるようにするプラグイン
         'nvimdev/lspsaga.nvim',
         config = function()
             require('lspsaga').setup({})
@@ -406,13 +454,33 @@ local neovim_plugins = {
             'nvim-tree/nvim-web-devicons',     -- optional
         },
     },
-
-    { "petertriho/nvim-scrollbar" }
+    {
+        -- NeoVimの通知とLSPのプログレスを表示するUIプラグイン
+        "j-hui/fidget.nvim",
+        config = function()
+            require("fidget").setup()
+        end,
+    },
+    { "petertriho/nvim-scrollbar" },
+    {
+        -- keymapのヘルプを表示するプラグイン
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+    }
 }
 
-require('lazy').setup(
-    merge_tables(common_plugins, is_vscode and vscode_plugins or neovim_plugins)
-)
+local plugins = merge_tables(merge_tables(common_plugins, {{ import = "lazyvim.plugins.extras.formatting.prettier" }}), is_vscode and vscode_plugins or neovim_plugins)
+
+require('lazy').setup(plugins)
 
 
 local on_attach = function(client, bufnr)
@@ -469,6 +537,7 @@ require("mason-lspconfig").setup_handlers {
         }
     end,
 }
+
 require("lspconfig").lua_ls.setup {
     settings = {
         Lua = {
@@ -520,5 +589,31 @@ require("scrollbar").setup({
         Hint = { color = colors.hint },
         Misc = { color = colors.purple },
     }
+})
+
+-- nvim-cmpの設定
+local cmp = require("cmp")
+
+-- cmp-cmdline
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+    }
+})
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources(
+    {
+        { name = 'path' }
+    },
+    {
+        {
+            name = 'cmdline',
+            -- option = {
+            --     ignore_cmds = { 'Man', '!' }
+            -- }
+        }
+    })
 })
 
