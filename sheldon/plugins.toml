@@ -35,13 +35,13 @@ github = "jeffreytse/zsh-vi-mode"
 
 
 # 自前のzsh設定ファイルの読み込み
-[plugins.dotfiles-defers]
+[plugins.dotfiles-defers] #遅延読み込みしても大丈夫なファイル
 # https://ktrysmt.github.io/blog/migrate-zinit-to-sheldon/
 local = "~/dotfiles/zsh"
 use = ["{!sync,*}.zsh"]
 apply = ["defer"]
 
-[plugins.dotfiles-sync]
+[plugins.dotfiles-sync] #知恵yん読み込みしないファイル
 # https://ktrysmt.github.io/blog/migrate-zinit-to-sheldon/
 local = "~/dotfiles/zsh"
 use = ["sync.zsh"]
