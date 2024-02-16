@@ -4,3 +4,6 @@
 
 ### locale ###
 export LANG="en_US.UTF-8"
+
+### SSH Agent ###
+export SSH_AUTH_SOCK=~/.1password/agent.sock

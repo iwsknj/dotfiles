@@ -19,3 +19,4 @@ opt.wrap = true -- 行の折り返しを有効にします。
 -- opt.list = true -- 特殊文字（タブやスペース）を可視化します。
 -- opt.listchars = { eol = "↲" }
 opt.relativenumber = false -- 行番号を絶対値で表示します。
+opt.conceallevel = 0
