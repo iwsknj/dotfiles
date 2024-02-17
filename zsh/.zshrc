@@ -2,9 +2,8 @@
 	function _ssh { compadd `fgrep 'Host ' ~/.ssh/*/config ~/.ssh/*/*/config | grep -v '*' | awk '{print $2}' | sort` }
 }
 
-# git（brew でインストールしたもの）のパスを通す
-export PATH=/usr/local/bin/git:$PATH
-
+[ -f ~/.zshrc.mac ] && source ~/.zshrc.mac
+[ -f ~/.zshrc.linux ] && source ~/.zshrc.linux
 
 # zshプロンプト
 eval "$(starship init zsh)"

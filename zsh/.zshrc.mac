@@ -1,0 +1,3 @@
+# git（brew でインストールしたもの）のパスを通す
+export PATH=/usr/local/bin/git:$PATH
+

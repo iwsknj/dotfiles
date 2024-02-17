@@ -1,0 +1,5 @@
+# sheldonを使用するため
+source $HOME/.cargo/env
+
+#nvim
+export PATH="$PATH:/opt/nvim/" 
