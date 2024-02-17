@@ -1,8 +1,0 @@
-# Colors
-	[[plugins]]
-	repo = 'tomasr/molokcai'
-	hook_add = '''
-		syntax enable
-		set background=dark
-		colorscheme molokai
-	'''

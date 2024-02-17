@@ -13,7 +13,7 @@ for f in .??*; do
 	[ "$f" = ".gitconfig.local.template" ] && continue
 	[ "$f" = ".gitmessage.local.template" ] && continue
 
-	ln -snfv ~/dotfiles/"$f" ~/
+	ln -snfv ~/dotfiles/"$f" ~
 done
 
 [ -e ~/.gitconfig.local ] || cp ~/dotfiles/.gitconfig.local.template ~/.gitconfig.local
