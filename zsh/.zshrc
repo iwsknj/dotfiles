@@ -14,10 +14,8 @@ eval "$(sheldon source)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-[ -f ./nvm.zsh ] && source ./nvm.zsh
 
-# その他設定ファイル
-for file in alias.zsh setting.zsh history_fzf.zsh history_substring.zsh; do
-  [ -f ./$file ] && source ./$file
+# ~/dotfiles/zsh ディレクトリ内の *.zsh ファイルを読み込む
+for file in ~/dotfiles/zsh/*.zsh; do
+    source $file
 done
-

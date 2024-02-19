@@ -5,6 +5,5 @@ function select-history() {
   CURSOR=${#BUFFER}
 }
 
-# TODO: FIX: これをバインドしても同じキーにhistory-incremental-search-backwardが上書きされてしまうので修正する
 zle -N select-history       # ZLEのウィジェットとして関数を登録
 bindkey '^R' select-history # `Ctrl+r` で登録したselect-historyウィジェットを呼び出す

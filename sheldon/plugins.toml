@@ -25,25 +25,13 @@ github = "zsh-users/zsh-autosuggestions"
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
+use = ["zsh-syntax-highlighting.zsh"]
 
 [plugins.zsh-history-substring-search]
 github = "zsh-users/zsh-history-substring-search"
 use = ["zsh-history-substring-search.zsh"]
 
-[plugins.zsh-vi-mode]
-github = "jeffreytse/zsh-vi-mode"
-
-
-# # 自前のzsh設定ファイルの読み込み
-# [plugins.dotfiles-defers] #遅延読み込みしても大丈夫なファイル
-# # https://ktrysmt.github.io/blog/migrate-zinit-to-sheldon/
-# local = "~/dotfiles/zsh"
-# use = ["{!sync,*}.zsh"]
-# apply = ["defer"]
-
-# [plugins.dotfiles-sync] #遅延読み込みしないファイル
-# # https://ktrysmt.github.io/blog/migrate-zinit-to-sheldon/
-# local = "~/dotfiles/zsh"
-# use = ["*.zsh"]
-# apply = ["source"]
+# 使いたいkeybindと競合するからコメントアウト
+# [plugins.zsh-vi-mode]
+# github = "jeffreytse/zsh-vi-mode"
 

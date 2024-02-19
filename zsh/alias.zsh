@@ -64,11 +64,11 @@ alias glocalemail='git config --local user.email'
 
 # Docker #
 alias d='docker'
-alias dc='docker-compose'
+alias dc='docker compose'
 alias dps='docker ps'
 alias dpsa='docker ps -a'
-alias dcps='docker-compose ps'
-alias dclg='docker-compose logs'
+alias dcps='docker compose ps'
+alias dclg='docker compose logs'
 alias dbash='(){ docker exec -it $1 bash}' # bash login
 alias dcbash='(){ dc exec $1 bash}'
 alias dexi='(){ docker exec -it  $1 $2}' # docker exec
