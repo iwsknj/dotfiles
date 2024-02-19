@@ -5,6 +5,7 @@ return {
       -- lazyvim.plugins.extras.lang.xxxで設定できないものはここでインストールする
       "shellcheck",
       "css-lsp",
+      "rubocop",
     })
   end,
 }
