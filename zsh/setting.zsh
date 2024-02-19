@@ -21,6 +21,8 @@ setopt share_history                  # 異なるウィンドウでコマンド�
 setopt hist_no_store                  # historyコマンドは履歴に登録しない
 setopt hist_reduce_blanks             # 余分な空白は詰めて記録
 setopt hist_verify                    # `!!`を実行したときにいきなり実行せずコマンドを見せる
+setopt hist_expire_dups_first # 履歴を切り詰める際に、重複する最も古いイベントから消す
+setopt hist_save_no_dups      # 履歴ファイルに書き出す際、新しいコマンドと重複する古いコマンドは切り捨てる
 
 ### 補完の設定 ###
 autoload -U compinit && compinit      # 補完機能の強化

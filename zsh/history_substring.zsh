@@ -2,3 +2,4 @@
 # 矢印上下で履歴検索
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
