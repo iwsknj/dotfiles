@@ -2,6 +2,7 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+
 -- vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
 local opt = vim.opt
 opt.encoding = "utf-8"
@@ -20,6 +21,7 @@ opt.wrap = true -- 行の折り返しを有効にします。
 -- opt.listchars = { eol = "↲" }
 opt.relativenumber = false -- 行番号を絶対値で表示します。
 opt.conceallevel = 0
+opt.virtualedit = 'all'
 
 -- LSPの警告フォーマット
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/

@@ -11,7 +11,7 @@ setopt interactive_comments           # コマンドラインでも # 以降を�
 ### ヒストリ関連の設定 ###
 # refere to https://suin.io/568
 HISTFILE=$HOME/.zsh_history # ヒストリファイル名
-HISTSIZE=10000 # メモリに保存される履歴の件数
+HISTSIZE=1000 # メモリに保存される履歴の件数
 SAVEHIST=10000 # 履歴ファイルに保存される履歴の件数
 HISTTIMEFORMAT='%F %T '
 HISTIGNORE='history:pwd:ls:ls *:ll:w:top:df *'
