@@ -21,7 +21,6 @@ opt.wrap = true -- 行の折り返しを有効にします。
 -- opt.listchars = { eol = "↲" }
 opt.relativenumber = false -- 行番号を絶対値で表示します。
 opt.conceallevel = 0
-opt.virtualedit = 'all'
 
 -- LSPの警告フォーマット
 -- ref: https://dev.classmethod.jp/articles/eetann-change-neovim-lsp-diagnostics-format/
