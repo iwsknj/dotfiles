@@ -6,6 +6,7 @@ return {
       "shellcheck",
       "css-lsp",
       "rubocop",
+      "htmlbeautifier",
     })
   end,
 }

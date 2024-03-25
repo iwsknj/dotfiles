@@ -14,3 +14,6 @@ keymap.set(
   "<Cmd>let @+ = @@<CR>",
   { noremap = true, desc = "レジスタ+に無名レジスタの文字列をコピー" }
 )
+
+keymap.set('n', 'j', 'gj', {noremap = true, desc = 'jで折り返しを無視'})
+keymap.set('n', 'k', 'gk', {noremap = true, desc = 'kで折り返しを無視'})

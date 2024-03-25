@@ -72,9 +72,8 @@ alias dclg='docker compose logs'
 alias dbash='(){ docker exec -it $1 bash}' # bash login
 alias dcbash='(){ dc exec -it $1 bash}'
 alias dcbashu='(){ dc exec --user $(id -u) -it $1 bash}'
-alias dexi='(){ docker exec -it  $1 $2}' # docker exec
-alias dex='(){ docker exec $1 $2}' # docker exec
-alias dcexecu='(){ dc exec --user $(id -u) $1 $2 }' # docker compose exec by user specified. $1=container_name $2=command
+alias dcexe='dc exec' # docker compose exec by default user. $1=container_name $2=command
+alias dcexeu='dc exec --user $(id -u)' # docker compose exec by user specified. $1=container_name $2=command
 alias dstopa='docker stop $(docker ps -q)' # stop all
 alias drma='docker rm $(docker ps -aq)' # container remove all
 alias dps='docker ps --format "table {{.Names}}\t{{.ID}}\t{{.Ports}}\t{{.Status}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}"'
