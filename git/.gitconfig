@@ -1,4 +1,6 @@
 [user]
+	name = iwsknj
+	email = kenji.iwase.5@gmail.com
 	# nameも使い分けてるので.gitconfig.localに書く
 	# emailも.gitconfig.localに書く
 	# スパム対策のため。
@@ -14,6 +16,15 @@
 [core]
 	editor = vim
 	ignorecase = false
+	excludesfile = /Users/kj/.gitignore_global
 
 [color]
 	ui = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/kj/.stCommitMsg
