@@ -1,6 +1,11 @@
-if [ -d "$HOME/.rbenv" ]; then
-  eval "$(~/.rbenv/bin/rbenv init - zsh)"
+if [[ "$(uname)" == "Darwin" ]]; then
+  eval "$(rbenv init - zsh)"
+elif [[ "$(uname)" == "Linux" ]]; then
+  if [ -d "$HOME/.rbenv" ]; then
+    eval "$(~/.rbenv/bin/rbenv init - zsh)"
+  fi
 fi
+
 
 ruby_lts='3.3.0'
 # 自動でrubyのバージョンを切り替える
