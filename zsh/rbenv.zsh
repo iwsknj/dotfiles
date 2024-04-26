@@ -19,9 +19,9 @@ load_rbenv() {
       echo "Installing Ruby $version..."
       rbenv install "$version"
     fi
-    rbenv shell "$version"
+    rbenv local "$version"
   else
-    rbenv shell $ruby_lts  # デフォルトのRubyバージョンを指定
+    rbenv local $ruby_lts  # デフォルトのRubyバージョンを指定
   fi
 }
 add-zsh-hook chpwd load_rbenv

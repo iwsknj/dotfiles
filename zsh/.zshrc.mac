@@ -1,3 +1,8 @@
 # git（brew でインストールしたもの）のパスを通す
 export PATH=/usr/local/bin/git:$PATH
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+
