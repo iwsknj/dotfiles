@@ -20,8 +20,8 @@ load_rbenv() {
       rbenv install "$version"
     fi
     rbenv local "$version"
-  else
-    rbenv local $ruby_lts  # デフォルトのRubyバージョンを指定
+  # else
+  #   rbenv local $ruby_lts  # デフォルトのRubyバージョンを指定
   fi
 }
 add-zsh-hook chpwd load_rbenv
