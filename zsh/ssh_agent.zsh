@@ -8,3 +8,9 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
    fi
    eval `cat $HOME/.ssh/ssh-agent`
 fi
+
+ssh-add $HOME/.ssh/github/github_id_ed25519
+
+# 以下のようにすると、ssh-agent が起動していない場合に、起動して追加することができる
+# eval "$(ssh-agent -s)"
+# ssh-add ~/.ssh/github/github_id_ed25519
