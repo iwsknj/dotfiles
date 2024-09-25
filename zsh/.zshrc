@@ -21,3 +21,9 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 for file in ~/dotfiles/zsh/*.zsh; do
     source $file
 done
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kenj/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kenj/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kenj/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kenj/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

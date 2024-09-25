@@ -1,5 +1,3 @@
-local Util = require("lazyvim.util")
-
 return {
   "telescope.nvim",
   dependencies = {
@@ -7,8 +5,8 @@ return {
   },
   keys = {
     { "<leader><leader>", nil }, -- lazyvimのデフォルトキーマップを無効化
-    { "<leader>ff", Util.telescope("files"), desc = "Find Files (cwd)" }, -- lazyvimのデフォルト微調整
-    { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (root dir)" }, -- lazyvimのデフォルト微調整
+    { "<leader>ff", LazyVim.pick("files"), desc = "Find Files (cwd)" }, -- lazyvimのデフォルト微調整
+    { "<leader>fF", LazyVim.pick("files", { cwd = false }), desc = "Find Files (root dir)" }, -- lazyvimのデフォルト微調整
     {
       "<leader>se",
       function()
