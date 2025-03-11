@@ -14,6 +14,7 @@ fi
 
 ########## espanso
 ln -sfv $HOME/Dropbox/AppConfig/espanso/match/base.yml $HOME/Library/Application\ Support/espanso/match/base.yml
+ln -sfv $HOME/Dropbox/AppConfig/espanso/config/default.yml $HOME/Library/Application\ Support/espanso/config/default.yml
 
 ########## karaviner-elements
 cp -r $HOME/.config/karabiner/assets $HOME/.config/karabiner/assets.org
