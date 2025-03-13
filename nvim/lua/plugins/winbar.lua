@@ -1,40 +1,43 @@
-return {
-  "fgheng/winbar.nvim",
-  config = function()
-    require("winbar").setup({
-      enabled = true,
+-- VSCode & Cursorを中心に使うため不使用
+return {}
 
-      show_file_path = true,
-      show_symbols = true,
+-- return {
+--   "fgheng/winbar.nvim",
+--   config = function()
+--     require("winbar").setup({
+--       enabled = true,
 
-      colors = {
-        path = "", -- You can customize colors like #c946fd
-        file_name = "",
-        symbols = "",
-      },
+--       show_file_path = true,
+--       show_symbols = true,
 
-      icons = {
-        file_icon_default = "",
-        seperator = ">",
-        editor_state = "●",
-        lock_icon = "",
-      },
+--       colors = {
+--         path = "", -- You can customize colors like #c946fd
+--         file_name = "",
+--         symbols = "",
+--       },
 
-      exclude_filetype = {
-        "help",
-        "startify",
-        "dashboard",
-        "packer",
-        "neogitstatus",
-        "NvimTree",
-        "Trouble",
-        "alpha",
-        "lir",
-        "Outline",
-        "spectre_panel",
-        "toggleterm",
-        "qf",
-      },
-    })
-  end,
-}
+--       icons = {
+--         file_icon_default = "",
+--         seperator = ">",
+--         editor_state = "●",
+--         lock_icon = "",
+--       },
+
+--       exclude_filetype = {
+--         "help",
+--         "startify",
+--         "dashboard",
+--         "packer",
+--         "neogitstatus",
+--         "NvimTree",
+--         "Trouble",
+--         "alpha",
+--         "lir",
+--         "Outline",
+--         "spectre_panel",
+--         "toggleterm",
+--         "qf",
+--       },
+--     })
+--   end,
+-- }

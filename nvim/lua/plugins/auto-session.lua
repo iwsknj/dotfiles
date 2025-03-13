@@ -12,12 +12,15 @@
 :Autosession delete
 ]]
 
-return {
-  "rmagatti/auto-session",
-  config = function()
-    require("auto-session").setup({
-      log_level = "error",
-      auto_session_suppress_dirs = { "~/", "~/Workspace", "~/Downloads", "/" },
-    })
-  end,
-}
+-- VSCode & Cursorを中心に使うため不使用
+return {}
+
+-- return {
+--   "rmagatti/auto-session",
+--   config = function()
+--     require("auto-session").setup({
+--       log_level = "error",
+--       auto_session_suppress_dirs = { "~/", "~/Workspace", "~/Downloads", "/" },
+--     })
+--   end,
+-- }
