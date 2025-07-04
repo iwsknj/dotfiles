@@ -17,6 +17,9 @@ eval "$(sheldon source)"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+# cargo(rust)
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # ~/dotfiles/zsh ディレクトリ内の *.zsh ファイルを読み込む
 for file in ~/dotfiles/zsh/*.zsh; do
     source $file
