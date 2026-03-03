@@ -30,3 +30,11 @@ if [ -f '/Users/kenj/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ke
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/kenj/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kenj/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+
+. "$HOME/.local/bin/env"
+
+# Added by Antigravity
+export PATH="/Users/kenj/.antigravity/antigravity/bin:$PATH"
+
+# Shopify Hydrogen alias to local projects
+alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
