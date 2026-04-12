@@ -81,6 +81,9 @@ alias dpsa='docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Ports}}\t{{.Sta
 alias dlogsf='() {  docker --logs --tail 10 -f $1 }'
 
 
+# Obsidian
+alias cd_obsidian='cd "/Users/kenj/Library/Mobile Documents/iCloud~md~obsidian/Documents/KJ-Workspace"'
+
 # Neovim
 alias v='nvim'
 alias vi='nvim'

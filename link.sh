@@ -75,4 +75,43 @@ ln -sfv $HOME/dotfiles/sheldon/plugins.toml $HOME/.config/sheldon/plugins.toml
 ########## tmux
 ln -sfv $HOME/dotfiles/tmux/.tmux.conf $HOME/.tmux.conf
 
+########## yazi
+if [ -L "$HOME/.config/yazi" ]; then
+	echo "$HOME/.config/yazi はすでにシンボリックリンクです。"
+else
+	ln -sfv $HOME/dotfiles/yazi $HOME/.config/yazi
+fi
+
+########## grip
+if [ ! -d "$HOME/.grip" ]; then
+	mkdir -p "$HOME/.grip"
+fi
+ln -sfv $HOME/dotfiles/grip/preview.sh $HOME/.grip/preview.sh
+ln -sfv $HOME/dotfiles/grip/settings.py $HOME/.grip/settings.py
+
+########## mo
+if [ ! -d "$HOME/.mo" ]; then
+	mkdir -p "$HOME/.mo"
+fi
+ln -sfv $HOME/dotfiles/mo/preview.sh $HOME/.mo/preview.sh
+
+########## bin scripts
+if [ ! -d "$HOME/.local/bin" ]; then
+	mkdir -p "$HOME/.local/bin"
+fi
+ln -sfv $HOME/dotfiles/bin/cmux-setup $HOME/.local/bin/cmux-setup
+ln -sfv $HOME/dotfiles/bin/git-watch $HOME/.local/bin/git-watch
+
+########## claude
+ln -sfv $HOME/dotfiles/claude/CLAUDE.md $HOME/.claude/CLAUDE.md
+ln -sfv $HOME/.claude/CLAUDE.md $HOME/AGENTS.md
+ln -sfv $HOME/dotfiles/claude/settings.json $HOME/.claude/settings.json
+
+claudeSkillsDir="$HOME/.claude/skills"
+if [ -L "$claudeSkillsDir" ]; then
+	echo "$claudeSkillsDir はすでにシンボリックリンクです。"
+else
+	ln -sfv $HOME/dotfiles/claude/skills $HOME/.claude/skills
+fi
+
 echo "DONE"

@@ -1,0 +1,7 @@
+[mgr]
+show_hidden = true
+
+[preview]
+file = [
+  { mime = "text/*", run = "bat --color=always --style=plain --paging=never {}" }
+]

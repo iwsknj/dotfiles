@@ -1,0 +1,177 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(bundle *)",
+      "Bash(rails *)",
+      "Bash(bin/rspec *)",
+      "Bash(mise *)",
+      "Bash(make *)",
+      "Bash(docker *)",
+      "Bash(terraform *)",
+      "Bash(brew bundle *)",
+      "Bash(node *)",
+      "Bash(ruby *)",
+      "Bash(python *)",
+      "Bash(jq *)",
+      "Bash(sed *)",
+      "Bash(awk *)",
+      "Bash(xargs *)",
+      "Bash(ls *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(tree *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(sort *)",
+      "Bash(diff *)",
+      "Bash(pwd)",
+      "Bash(which *)",
+      "Bash(echo *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(touch *)",
+      "Bash(chmod *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Edit",
+      "Write"
+    ],
+    "deny": [
+      "Read(id_rsa)",
+      "Read(id_ed25519)",
+      "Write(**/secrets/**)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm remove:*)",
+      "Read(**/.env)",
+      "Read(./secrets/**)",
+      "Read(~/.aws/credentials)",
+      "Read(~/.ssh/*)",
+      "Read(**/master.key)",
+      "Read(**/*.pem)",
+      "Read(**/.npmrc)",
+      "Read(**/.netrc)",
+      "Edit(**/.env)",
+      "Edit(~/.aws/credentials)",
+      "Edit(~/.ssh/*)",
+      "Edit(**/master.key)",
+      "Edit(**/*.pem)",
+      "Edit(**/.npmrc)",
+      "Edit(**/.netrc)"
+    ],
+    "ask": [
+      "Bash(brew install *)",
+      "Bash(git rm *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git push * --force)",
+      "Bash(git push * -f)",
+      "Bash(git branch -D *)",
+      "Bash(git stash drop *)",
+      "Bash(curl -X *)",
+      "Bash(curl * -X *)",
+      "Bash(curl --request *)",
+      "Bash(curl * --request *)",
+      "Bash(curl -d *)",
+      "Bash(curl * -d *)",
+      "Bash(curl --data *)",
+      "Bash(curl * --data *)",
+      "Bash(curl -F *)",
+      "Bash(curl * -F *)",
+      "Bash(wget --post-data *)",
+      "Bash(wget * --post-data *)",
+      "Bash(wget --post-file *)",
+      "Bash(wget * --post-file *)",
+      "Bash(sudo *)",
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(rm -Rf *)",
+      "Bash(rm -rF *)",
+      "Bash(rm --recursive *)",
+      "Bash(ssh *)",
+      "Bash(scp *)",
+      "Bash(terraform apply *)",
+      "Bash(terraform destroy *)",
+      "Bash(npm publish *)",
+      "Read(**/.env.*)",
+      "Edit(**/.env.*)",
+      "Edit(./secrets/**)",
+      "Read(**/terraform.tfstate)",
+      "Edit(**/terraform.tfstate)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/check-git-tracked.sh"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/scripts/statusline.sh"
+  },
+  "enabledPlugins": {
+    "example-skills@anthropic-agent-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "hummer98-using-cmux": {
+      "source": {
+        "source": "github",
+        "repo": "hummer98/using-cmux"
+      }
+    },
+    "hummer98-cmux-team": {
+      "source": {
+        "source": "github",
+        "repo": "hummer98/cmux-team"
+      }
+    },
+    "hummer98-cfork": {
+      "source": {
+        "source": "github",
+        "repo": "hummer98/cfork"
+      }
+    }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "effortLevel": "high"
+}
