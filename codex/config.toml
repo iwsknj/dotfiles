@@ -1,0 +1,91 @@
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+personality = "pragmatic"
+approval_policy = "on-request"
+default_permissions = "kenj"
+
+[permissions.kenj.filesystem]
+":minimal" = "read"
+":project_roots" = "write"
+"/private/tmp" = "write"
+"/private/var/folders/zb/hydvwc2d1wg58d7qtp2slj380000gn/T" = "write"
+"/Users/kenj/.codex/memories" = "write"
+"/Users/kenj/**/id_rsa" = "none"
+"/Users/kenj/**/id_ed25519" = "none"
+"/Users/kenj/**/.env" = "none"
+"/Users/kenj/**/.env.*" = "none"
+"/Users/kenj/**/secrets/**" = "none"
+"~/.aws/credentials" = "none"
+"~/.ssh/*" = "none"
+"/Users/kenj/**/master.key" = "none"
+"/Users/kenj/**/*.pem" = "none"
+"/Users/kenj/**/.npmrc" = "none"
+"/Users/kenj/**/.netrc" = "none"
+"/Users/kenj/**/terraform.tfstate" = "none"
+
+[permissions.kenj.network]
+enabled = true
+
+[projects."/Users/kenj/Codes/personals/weightly"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Codes/works/topostopos/tarzan/wordpress"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Codes/works/terminal/the-terminal.jp"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Codes/works/blanciris/blanciris-shopify-hydrogen-storefront"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Codes/adult_affiliates/zax"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Codes/works/terminal/app.terminal-order.com"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/dotfiles"]
+trust_level = "trusted"
+
+[notice.model_migrations]
+"gpt-5.1-codex-max" = "gpt-5.2-codex"
+"gpt-5.2-codex" = "gpt-5.3-codex"
+"gpt-5.3-codex" = "gpt-5.4"
+
+[marketplaces.openai-bundled]
+last_updated = "2026-04-30T21:34:11Z"
+source_type = "local"
+source = "/Users/kenj/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-05-01T05:24:01Z"
+source_type = "local"
+source = "/Users/kenj/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[plugins."browser-use@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[tui]
+status_line = [
+	"model-with-reasoning",
+	"current-dir",
+	"git-branch",
+	"context-remaining",
+	"five-hour-limit",
+	"weekly-limit",
+]

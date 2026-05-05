@@ -115,6 +115,18 @@ else
 fi
 
 ########## codex
+ln -sfv $HOME/dotfiles/codex/config.toml $HOME/.codex/config.toml
+
+codexRulesDir="$HOME/.codex/rules"
+if [ -L "$codexRulesDir" ]; then
+	echo "$codexRulesDir はすでにシンボリックリンクです。"
+else
+	if [ -e "$codexRulesDir" ]; then
+		mv "$codexRulesDir" "$HOME/.codex/rules.bak"
+	fi
+	ln -sfv $HOME/dotfiles/codex/rules $HOME/.codex/rules
+fi
+
 codexSkillsDir="$HOME/.codex/skills"
 if [ -L "$codexSkillsDir" ]; then
 	echo "$codexSkillsDir はすでにシンボリックリンクです。"
