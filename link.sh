@@ -114,4 +114,15 @@ else
 	ln -sfv $HOME/dotfiles/claude/skills $HOME/.claude/skills
 fi
 
+########## codex
+codexSkillsDir="$HOME/.codex/skills"
+if [ -L "$codexSkillsDir" ]; then
+	echo "$codexSkillsDir はすでにシンボリックリンクです。"
+else
+	if [ -e "$codexSkillsDir" ]; then
+		mv "$codexSkillsDir" "$HOME/.codex/skills.bak"
+	fi
+	ln -sfv $HOME/dotfiles/codex/skills $HOME/.codex/skills
+fi
+
 echo "DONE"

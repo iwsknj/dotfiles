@@ -4,6 +4,7 @@
       "Bash(git *)",
       "Bash(gh *)",
       "Bash(npm *)",
+      "Bash(pnpm *)",
       "Bash(npx *)",
       "Bash(bundle *)",
       "Bash(rails *)",
@@ -50,6 +51,8 @@
       "Write(**/secrets/**)",
       "Bash(npm uninstall:*)",
       "Bash(npm remove:*)",
+      "Bash(pnpm uninstall:*)",
+      "Bash(pnpm remove:*)",
       "Read(**/.env)",
       "Read(./secrets/**)",
       "Read(~/.aws/credentials)",
@@ -77,6 +80,8 @@
       "Bash(git push * -f)",
       "Bash(git branch -D *)",
       "Bash(git stash drop *)",
+      "Bash(npm install)",
+      "Bash(pnpm install)",
       "Bash(curl -X *)",
       "Bash(curl * -X *)",
       "Bash(curl --request *)",
@@ -108,7 +113,7 @@
       "Read(**/terraform.tfstate)",
       "Edit(**/terraform.tfstate)"
     ],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "auto"
   },
   "hooks": {
     "PreToolUse": [
@@ -150,7 +155,8 @@
     "command": "~/.claude/scripts/statusline.sh"
   },
   "enabledPlugins": {
-    "example-skills@anthropic-agent-skills": true
+    "example-skills@anthropic-agent-skills": true,
+    "swift-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "hummer98-using-cmux": {
@@ -172,6 +178,7 @@
       }
     }
   },
+  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
-  "effortLevel": "high"
+  "skipAutoPermissionPrompt": true
 }
