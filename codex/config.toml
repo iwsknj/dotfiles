@@ -3,6 +3,26 @@ model_reasoning_effort = "medium"
 personality = "pragmatic"
 approval_policy = "on-request"
 default_permissions = "kenj"
+notify = ["afplay", "/System/Library/Sounds/Glass.aiff"]
+
+[features]
+codex_hooks = true
+
+[[hooks.PreToolUse]]
+matcher = "Edit|Write"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = "/Users/kenj/dotfiles/coding-agent/hooks/check-git-tracked.sh"
+timeout = 30
+statusMessage = "Checking git tracked file"
+
+[[hooks.Stop]]
+
+[[hooks.Stop.hooks]]
+type = "command"
+command = "afplay /System/Library/Sounds/Glass.aiff"
+timeout = 5
 
 [permissions.kenj.filesystem]
 ":minimal" = "read"
