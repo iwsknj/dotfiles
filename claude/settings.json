@@ -122,7 +122,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/dotfiles/coding-agent/hooks/check-git-tracked.sh"
+            "command": "~/.claude/hooks/check-git-tracked.sh"
           }
         ]
       }
@@ -158,8 +158,27 @@
     "example-skills@anthropic-agent-skills": true,
     "swift-lsp@claude-plugins-official": true
   },
-  "extraKnownMarketplaces": {},
-  "effortLevel": "high",
+  "extraKnownMarketplaces": {
+    "hummer98-using-cmux": {
+      "source": {
+        "source": "github",
+        "repo": "hummer98/using-cmux"
+      }
+    },
+    "hummer98-cmux-team": {
+      "source": {
+        "source": "github",
+        "repo": "hummer98/cmux-team"
+      }
+    },
+    "hummer98-cfork": {
+      "source": {
+        "source": "github",
+        "repo": "hummer98/cfork"
+      }
+    }
+  },
+  "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
   "skipAutoPermissionPrompt": true
 }
