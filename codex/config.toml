@@ -67,18 +67,21 @@ trust_level = "trusted"
 [projects."/Users/kenj/dotfiles"]
 trust_level = "trusted"
 
+[projects."/Users/kenj/Documents/Codex/2026-05-11/chrome-x-com-internal-api-post"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 "gpt-5.1-codex-max" = "gpt-5.2-codex"
 "gpt-5.2-codex" = "gpt-5.3-codex"
 "gpt-5.3-codex" = "gpt-5.4"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-05-06T13:56:09Z"
+last_updated = "2026-05-12T14:25:39Z"
 source_type = "local"
 source = "/Users/kenj/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-05-06T14:24:00Z"
+last_updated = "2026-05-10T15:23:47Z"
 source_type = "local"
 source = "/Users/kenj/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
@@ -95,6 +98,9 @@ enabled = true
 enabled = true
 
 [plugins."browser-use@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
 enabled = true
 
 [tui.model_availability_nux]

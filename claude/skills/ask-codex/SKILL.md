@@ -27,7 +27,8 @@ codex exec "Your question or task here"
 | ------------- | ----------------------------------------------- |
 | `-m MODEL`    | モデルを指定                                    |
 | `-C DIR`      | 作業ディレクトリを設定                          |
-| `--full-auto` | workspace-writeサンドボックスで自動実行を有効化 |
+| `--sandbox workspace-write` | ワークスペース内の書き込みを許可 |
+| `-c 'approval_policy="never"'` | 確認プロンプトなしで非対話実行 |
 
 > すべての利用可能なオプションについては、`codex exec --help`を実行してください
 
@@ -54,12 +55,12 @@ codex exec -m o4-mini "Write a function that validates email addresses"
 **Codexに自動的に変更を加えさせる:**
 
 ```bash
-codex exec --full-auto "Add error handling to all API endpoints"
+codex exec -c 'approval_policy="never"' --sandbox workspace-write "Add error handling to all API endpoints"
 ```
 
 ## 注意事項
 
 - Codexは`exec`サブコマンドで非対話的に実行されます
 - デフォルトでは、出力はstdoutに送られ、承認なしではファイルは変更されません
-- サンドボックスの制約内で自動実行するには`--full-auto`を使用してください
+- サンドボックスの制約内で自動実行するには`-c 'approval_policy="never"'`と`--sandbox workspace-write`を使用してください
 - `-C`が指定されない限り、コマンドは現在の作業ディレクトリを継承します

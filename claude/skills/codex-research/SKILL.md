@@ -9,13 +9,13 @@ Codex CLIを使用してコードベースを深く読み込み、実装前に r
 
 ## 実行コマンド
 
-codex exec --full-auto --sandbox read-only --cd <project_directory> "<request>"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_directory> "<request>"
 
 ## パラメータ
 
 | パラメータ            | 説明                                       |
 | --------------------- | ------------------------------------------ |
-| `--full-auto`         | 完全自動モードで実行                       |
+| `-c 'approval_policy="never"'` | 確認プロンプトなしで非対話実行             |
 | `--sandbox read-only` | 読み取り専用サンドボックス（安全な分析用） |
 | `--cd <dir>`          | 対象プロジェクトのディレクトリ             |
 | `"<request>"`         | 依頼内容（日本語可）                       |
@@ -26,19 +26,19 @@ codex exec --full-auto --sandbox read-only --cd <project_directory> "<request>"
 
 ### コードレビュー
 
-codex exec --full-auto --sandbox read-only --cd /path/to/project "このプロジェクトのコードをレビューして、改善点を指摘してください"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "このプロジェクトのコードをレビューして、改善点を指摘してください"
 
 ### アーキテクチャ分析
 
-codex exec --full-auto --sandbox read-only --cd /path/to/project "このプロジェクトのアーキテクチャを分析して説明してください。確認や質問は不要です。改善提案まで自主的に出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "このプロジェクトのアーキテクチャを分析して説明してください。確認や質問は不要です。改善提案まで自主的に出力してください。"
 
 ### リファクタリング提案
 
-codex exec --full-auto --sandbox read-only --cd /path/to/project "技術的負債を特定し、リファクタリング計画を提案してください。確認や質問は不要です。具体的なコード例まで自主的に出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "技術的負債を特定し、リファクタリング計画を提案してください。確認や質問は不要です。具体的なコード例まで自主的に出力してください。"
 
 ### バグ調査
 
-codex exec --full-auto --sandbox read-only --cd /path/to/project "認証処理でエラーが発生する原因を調査してください"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "認証処理でエラーが発生する原因を調査してください"
 
 ## 実行手順
 
