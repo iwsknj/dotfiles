@@ -1,15 +1,17 @@
-model = "gpt-5.5"
-model_reasoning_effort = "medium"
+model = "gpt-5.6-sol"
+model_reasoning_effort = "xhigh"
 personality = "pragmatic"
 approval_policy = "on-request"
 default_permissions = "kenj"
-notify = ["afplay", "/System/Library/Sounds/Glass.aiff"]
+
+notify = ["/Users/kenj/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended", "--previous-notify", "[\"afplay\",\"\\/System\\/Library\\/Sounds\\/Glass.aiff\"]"]
 
 [features]
 codex_hooks = true
+js_repl = false
 
 [[hooks.PreToolUse]]
-matcher = "Edit|Write"
+matcher = "Edit|Write|Bash|exec_command"
 
 [[hooks.PreToolUse.hooks]]
 type = "command"
@@ -23,6 +25,23 @@ statusMessage = "Checking git tracked file"
 type = "command"
 command = "afplay /System/Library/Sounds/Glass.aiff"
 timeout = 5
+
+[hooks.state]
+
+[hooks.state."/Users/kenj/.codex/config.toml:pre_tool_use:0:0"]
+trusted_hash = "sha256:074257b92fbf988852da8fc41fdae0a511b2835d2b329550b2571c1a90d8f0c0"
+enabled = true
+
+[hooks.state."/Users/kenj/.codex/config.toml:stop:0:0"]
+trusted_hash = "sha256:8068f821f89aebb0c11c9a357297affa4c944cd02de1bf994844e0752e41a30c"
+enabled = true
+
+[hooks.state."/Users/kenj/Codes/adult_affiliates/zax/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:89b5acb3765873576c1e4e1a767834959a5250936bce768006a42c746620e9c0"
+enabled = true
+
+[hooks.state."/Users/kenj/Codes/works/blanciris/blanciris-shopify-hydrogen-storefront/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:7e8e02032d814113a4524479ec159c0e53759f93d4f74532aaa8bbde15473399"
 
 [permissions.kenj.filesystem]
 ":minimal" = "read"
@@ -70,18 +89,36 @@ trust_level = "trusted"
 [projects."/Users/kenj/Documents/Codex/2026-05-11/chrome-x-com-internal-api-post"]
 trust_level = "trusted"
 
+[projects."/Users/kenj/Documents/Codex/2026-05-21/chrome-https-voicy-jp-channel-657"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Codes/adult_affiliates/references/twitter_api_browser_python"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Codes/adult_affiliates/references/public_repo_KonomiTV"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Desktop/apk"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Codes/personals/menesu-content-creator/men-esthe-crawler"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Codes/personals/menes"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 "gpt-5.1-codex-max" = "gpt-5.2-codex"
 "gpt-5.2-codex" = "gpt-5.3-codex"
 "gpt-5.3-codex" = "gpt-5.4"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-05-12T14:25:39Z"
+last_updated = "2026-07-10T06:53:28Z"
 source_type = "local"
 source = "/Users/kenj/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-05-10T15:23:47Z"
+last_updated = "2026-07-16T11:31:22Z"
 source_type = "local"
 source = "/Users/kenj/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
@@ -97,14 +134,62 @@ enabled = true
 [plugins."github@openai-curated"]
 enabled = true
 
-[plugins."browser-use@openai-bundled"]
-enabled = true
-
 [plugins."chrome@openai-bundled"]
 enabled = true
 
-[tui.model_availability_nux]
-"gpt-5.5" = 4
+[plugins."sites@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/kenj/.codex"
+CODEX_HOME = "/Users/kenj/.codex"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f,c8b7e809d7cf9e20a57123b2530d476ccec9a01a6230a7b2b924fea7d94d7f4a"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.707.31428"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+
+[mcp_servers.computer-use]
+command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+args = ["mcp"]
+cwd = "."
+enabled = false
+
+[desktop]
+ambient-suggestions-enabled = true
+appearanceTheme = "dark"
+conversationDetailMode = "STEPS_COMMANDS"
+followUpQueueMode = "queue"
+dock-icon-preference = "codex-system"
+
+[desktop.open-in-target-preferences]
+global = "vscode"
+
+[desktop.open-in-target-preferences.perPath]
+"/Users/kenj/Codes/works/blanciris/blanciris-shopify-hydrogen-storefront" = "vscode"
 
 [tui]
 status_line = [
@@ -115,3 +200,16 @@ status_line = [
 	"five-hour-limit",
 	"weekly-limit",
 ]
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+"gpt-5.6-sol" = 4
+
+[sandbox_workspace_write]
+writable_roots = ["/Users/kenj/.agents/skills/agmsg/db", "/Users/kenj/.agents/skills/agmsg/teams"]
+
+[apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_create_pull_request]
+approval_mode = "approve"
+
+[apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_update_issue_comment]
+approval_mode = "approve"

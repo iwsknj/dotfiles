@@ -41,6 +41,11 @@ prefix_rule(pattern = ["chmod"], decision = "allow")
 
 # Commands that should always be blocked.
 prefix_rule(
+    pattern = ["git", "push", ["--force", "-f", "--force-with-lease"]],
+    decision = "forbidden",
+    justification = "Force push is blocked by default.",
+)
+prefix_rule(
     pattern = ["npm", ["uninstall", "remove"]],
     decision = "forbidden",
     justification = "Package removal is blocked by default.",
@@ -56,9 +61,6 @@ prefix_rule(pattern = ["brew", "install"], decision = "prompt")
 prefix_rule(pattern = ["git", "rm"], decision = "prompt")
 prefix_rule(pattern = ["git", "reset", "--hard"], decision = "prompt")
 prefix_rule(pattern = ["git", "clean"], decision = "prompt")
-prefix_rule(pattern = ["git", "push"], decision = "prompt")
-prefix_rule(pattern = ["git", "push", "--force"], decision = "prompt")
-prefix_rule(pattern = ["git", "push", "-f"], decision = "prompt")
 prefix_rule(pattern = ["git", "branch", "-D"], decision = "prompt")
 prefix_rule(pattern = ["git", "stash", "drop"], decision = "prompt")
 prefix_rule(pattern = ["npm", "install"], decision = "prompt")
@@ -82,3 +84,6 @@ prefix_rule(pattern = ["scp"], decision = "prompt")
 prefix_rule(pattern = ["terraform", "apply"], decision = "prompt")
 prefix_rule(pattern = ["terraform", "destroy"], decision = "prompt")
 prefix_rule(pattern = ["npm", "publish"], decision = "prompt")
+prefix_rule(pattern=["/bin/zsh", "-lc", "~/.agents/skills/agmsg/scripts/whoami.sh \"$(pwd)\" codex"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "~/.agents/skills/agmsg/scripts/delivery.sh set turn codex \"$(pwd)\""], decision="allow")
+prefix_rule(pattern=["uv", "run"], decision="allow")

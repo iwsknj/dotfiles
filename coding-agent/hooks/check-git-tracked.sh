@@ -5,7 +5,15 @@ JQ="/opt/homebrew/bin/jq"
 INPUT=$(cat)
 FILE_PATH=$(echo "$INPUT" | "$JQ" -r '.tool_input.file_path // .tool_input.path // .tool_input.filePath // empty')
 TOOL_NAME=$(echo "$INPUT" | "$JQ" -r '.tool_name // empty')
-PATCH_COMMAND=$(echo "$INPUT" | "$JQ" -r '.tool_input.command // empty')
+COMMAND=$(echo "$INPUT" | "$JQ" -r '.tool_input.command // .tool_input.cmd // empty')
+PATCH_COMMAND="$COMMAND"
+
+block_command() {
+  local reason="$1"
+
+  "$JQ" -n --arg reason "$reason" \
+    '{decision:"block",reason:$reason}'
+}
 
 request_confirmation() {
   local reason="$1"
@@ -18,6 +26,17 @@ request_confirmation() {
       '{hookSpecificOutput:{hookEventName:"PreToolUse",permissionDecision:"ask",permissionDecisionReason:$reason}}'
   fi
 }
+
+GIT_PUSH_RE="(^|[[:space:];|&\(])git[[:space:]]+push($|[[:space:];|&])"
+FORCE_ARG_RE="(^|[[:space:]])(--force|-f|--force-with-lease)(=|$|[[:space:]])"
+FORCE_REFSPEC_RE='(^|[[:space:]])\+[^[:space:];|&]+'
+
+if [[ "$COMMAND" =~ $GIT_PUSH_RE ]]; then
+  if [[ "$COMMAND" =~ $FORCE_ARG_RE ]] || [[ "$COMMAND" =~ $FORCE_REFSPEC_RE ]]; then
+    block_command "force pushは禁止です"
+    exit 0
+  fi
+fi
 
 check_file() {
   local file_path="$1"
@@ -36,6 +55,10 @@ check_file() {
   if [[ -z "$repo_root" ]]; then
     request_confirmation "Gitリポジトリ外のファイルです"
     exit 0
+  fi
+
+  if [[ "$file_path" == "$repo_root/.local/"* ]]; then
+    return 0
   fi
 
   git -C "$repo_root" ls-files --error-unmatch "$file_path" &>/dev/null && return 0
