@@ -1,7 +1,7 @@
 ---
 name: qa-checklist
 description: 現在のブランチと比較ブランチ（develop / master 等）の差分から、UIのQA検証項目を日本語Markdownで生成し、リポジトリの `.local/issues/<番号>/qa-checklist.md` に出力する。CS/PdM向けの簡潔版（`qa-simple.md`）も派生として生成可能。トリガー例「/qa-checklist」「QA検証項目を作って」「この対応のQA項目をまとめて」「CS向けに簡潔版も」
-allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git show:*), Bash(git branch:*), Bash(git rev-parse:*), Bash(git merge-base:*), Bash(mkdir:*), Bash(ls:*), Bash(test:*), Read, Write, Edit, Grep, Glob
+allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git show:*), Bash(git branch:*), Bash(git rev-parse:*), Bash(git merge-base:*), Bash(gh pr view:*), Bash(gh repo view:*), Bash(mkdir:*), Bash(ls:*), Bash(test:*), Read, Write, Edit, Grep, Glob
 ---
 
 # qa-checklist
@@ -25,7 +25,7 @@ allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git s
 ### 1. 文脈を集める（並列で実行）
 
 - `git status` / `git rev-parse --abbrev-ref HEAD` で現ブランチを把握
-- `git branch -a` で比較対象（`develop` / `master` / `main`）の存在を確認。リポジトリの慣習に合わせる（the-terminal.jp 系は `develop`、weightly 等は `main` か `master`）
+- 比較ブランチ（= PR のベースブランチ）を決める：引数指定 → 既存 PR のベース（`gh pr view --json baseRefName -q .baseRefName`）→ デフォルトブランチ（`gh repo view --json defaultBranchRef -q .defaultBranchRef.name`）の順。`release` / `develop` などの中間ブランチがあるリポジトリではユーザーに確認
 - `git merge-base <比較ブランチ> HEAD` でマージベースを取り、`git diff <マージベース>...HEAD --stat` と `git log <マージベース>..HEAD --oneline` で全体像を掴む
 - リポジトリルートに `.local/issues/` が既にあるかを確認。同じ issue の既存ファイル（`research.md` / `plan.md` 等）があれば必ず読み、矛盾しない内容にする
 

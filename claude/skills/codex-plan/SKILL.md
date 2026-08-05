@@ -1,7 +1,7 @@
 ---
 name: codex-plan
 description: OpenAI Codex CLIを使用してコードベースを分析し、詳細な実装計画をplan.mdに作成する。調査フェーズ完了後に使用。使用場面: (1) 新機能実装前の計画策定。トリガー: "codex-plan", "codexで計画作成"
-allowed-tools: Bash(codex *)
+allowed-tools: Bash(codex:*)
 ---
 
 # Codex Plan Creation
@@ -10,7 +10,9 @@ Codex CLIを使用してコードベースを分析し、詳細な実装計画�
 
 ## 実行コマンド
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_directory> "<request>"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_directory> -o <出力先>/plan.md "<request>"
+
+`--sandbox read-only` のため Codex 自身はファイルを書き込めない。`plan.md` は `-o`（最終メッセージのファイル書き出し）で生成する。
 
 ## パラメータ
 
@@ -19,6 +21,7 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_direct
 | `-c 'approval_policy="never"'` | 確認プロンプトなしで非対話実行             |
 | `--sandbox read-only` | 読み取り専用サンドボックス（安全な分析用） |
 | `--cd <dir>`          | 対象プロジェクトのディレクトリ             |
+| `-o <file>`           | Codex の最終メッセージを書き出すパス（= `plan.md` の生成先） |
 | `"<request>"`         | 依頼内容（日本語可）                       |
 
 ## 計画ドキュメントの要件
@@ -35,13 +38,13 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_direct
 ### 基本パターン: 新機能の実装計画
 
 ```bash
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "システムを拡張して<ビジネス成果>を実行する新しい機能<名前と説明>を構築したいと考えています。これを実装する方法を概説した詳細なplan.mdドキュメントを作成します。コードスニペットを含めます。確認や質問は不要です。具体的な計画まで自主的に出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/plan.md "システムを拡張して<ビジネス成果>を実行する新しい機能<名前と説明>を構築したいと考えています。これを実装する方法を概説した詳細な実装計画をMarkdownで出力してください。コードスニペットを含めます。確認や質問は不要です。具体的な計画まで自主的に出力してください。"
 ```
 
 ### パターン1: ページネーション機能の追加
 
 ```bash
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "リストエンドポイントは、オフセットではなくカーソルベースのページネーションをサポートする必要があります。これを実現する方法については、詳細なplan.mdを記述してください。変更を提案する前にソースファイルを読み取り、実際のコードベースに基づいて計画を立ててください。確認や質問は不要です。具体的なコード例まで自主的に出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/plan.md "リストエンドポイントは、オフセットではなくカーソルベースのページネーションをサポートする必要があります。これを実現する詳細な実装計画をMarkdownで出力してください。変更を提案する前にソースファイルを読み取り、実際のコードベースに基づいて計画を立ててください。確認や質問は不要です。具体的なコード例まで自主的に出力してください。"
 ```
 
 ### パターン2: 参照実装を共有する場合
@@ -49,11 +52,11 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/projec
 優れた実装が見つかったオープンソースリポジトリのコードを参照として共有する：
 
 ```bash
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "並べ替え可能なIDを追加したいと考えています。以下のコードは、これを適切に実行するプロジェクトからのID生成コードです：
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/plan.md "並べ替え可能なIDを追加したいと考えています。以下のコードは、これを適切に実行するプロジェクトからのID生成コードです：
 
 [参照コードをここに貼り付け]
 
-同様のアプローチを採用する方法を説明するplan.mdを作成します。実際のコードベースを読み取り、具体的な実装計画を提案してください。確認や質問は不要です。コードスニペットを含む詳細な計画まで自主的に出力してください。"
+同様のアプローチを採用する実装計画をMarkdownで出力してください。実際のコードベースを読み取り、具体的な実装計画を提案してください。確認や質問は不要です。コードスニペットを含む詳細な計画まで自主的に出力してください。"
 ```
 
 ### パターン3: 調査フェーズ結果を参照する場合
@@ -61,7 +64,7 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/projec
 `codex-research`を実行済みで、既存の`research.md`がある場合：
 
 ```bash
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "システムを拡張して新しい機能を構築したいと考えています。タスク番号/タスク名のディレクトリ配下に既存のresearch.mdがある場合は、その内容を参照して計画を立ててください。これを実装する方法を概説した詳細なplan.mdドキュメントを作成します。コードスニペットを含めます。確認や質問は不要です。具体的な計画まで自主的に出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/plan.md "システムを拡張して新しい機能を構築したいと考えています。タスク番号/タスク名のディレクトリ配下に既存のresearch.mdがある場合は、その内容を参照して計画を立ててください。これを実装する方法を概説した詳細な実装計画をMarkdownで出力してください。コードスニペットを含めます。確認や質問は不要です。具体的な計画まで自主的に出力してください。"
 ```
 
 ## 重要な原則
@@ -97,8 +100,8 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/projec
 2. 対象プロジェクトのディレクトリを特定する
 3. **既存の`research.md`を確認する**（`codex-research`を実行済みの場合、タスク番号やタスク名のディレクトリ配下の`research.md`を読み取り、調査結果を参照する）
 4. 必要に応じて参照実装のコードを依頼内容に含める
-5. 上記コマンド形式でCodexを実行
-6. 結果をユーザーに報告し、タスク番号 or タスク名のディレクトリ名配下に`plan.md`というファイル名で出力する
+5. タスク番号 or タスク名のディレクトリ（例: `.local/issues/<番号>/`）を出力先とし、`-o` に `plan.md` のパスを指定して上記コマンドを実行する
+6. 生成された `plan.md` を確認し、要点をユーザーに報告する
 
 ## 出力例の構造
 

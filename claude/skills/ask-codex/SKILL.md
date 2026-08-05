@@ -1,7 +1,7 @@
 ---
 name: ask-codex
 description: Codex CLIにコーディング支援を依頼します。セカンドオピニオン、コード生成、デバッグ、コーディングタスクの委任に使用します。
-allowed-tools: Bash(codex *)
+allowed-tools: Bash(codex:*)
 ---
 
 <!-- reffer: https://qiita.com/hiropon122/items/c130168ca3fc0f1f6aaa -->
@@ -44,12 +44,6 @@ codex exec "How do I implement a binary search in Python?"
 
 ```bash
 codex exec -C /path/to/project "Explain the architecture of this codebase"
-```
-
-**特定のモデルを使用する:**
-
-```bash
-codex exec -m o4-mini "Write a function that validates email addresses"
 ```
 
 **Codexに自動的に変更を加えさせる:**

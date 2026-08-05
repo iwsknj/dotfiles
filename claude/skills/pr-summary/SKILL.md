@@ -1,7 +1,7 @@
 ---
 name: pr-summary
 description: 現在のブランチと比較ブランチ（develop / master / main）の差分から、日本語のPRタイトルとMarkdownのPR概要を作成して提示する。リポジトリの PULL_REQUEST_TEMPLATE.md があれば踏襲する。`gh pr create` までは行わず、本文の提示のみ。トリガー例「/pr-summary」「PR概要をまとめて」「このブランチとdevelopの差分でPR概要を」「マークダウン形式で」
-allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git show:*), Bash(git branch:*), Bash(git rev-parse:*), Bash(git merge-base:*), Bash(gh pr view:*), Bash(gh pr list:*), Bash(ls:*), Bash(find:*), Read, Grep, Glob
+allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git show:*), Bash(git branch:*), Bash(git rev-parse:*), Bash(git merge-base:*), Bash(gh pr view:*), Bash(gh pr list:*), Bash(gh repo view:*), Bash(ls:*), Bash(find:*), Read, Grep, Glob
 ---
 
 # pr-summary
@@ -21,10 +21,10 @@ allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git s
 ### 1. 文脈を集める（並列で実行）
 
 - `git rev-parse --abbrev-ref HEAD` で現ブランチ
-- `git branch -a` から比較対象を決める。リポジトリの慣習に合わせる：
-  - the-terminal.jp / zax 系 → `develop`
-  - blanciris / weightly 系 → `main` または `master`
-  - 不明なときはユーザーに確認
+- 比較ブランチ（= PR のベースブランチ）を決める：
+  - 引数で指定があればそれを使う
+  - 現ブランチに既存 PR があれば `gh pr view --json baseRefName -q .baseRefName`
+  - どちらも無ければ `gh repo view --json defaultBranchRef -q .defaultBranchRef.name` のデフォルトブランチ。ただし `release` / `develop` などの中間ブランチが存在するリポジトリでは、どちらに向ける PR かをユーザーに確認
 - `git merge-base <比較> HEAD` でマージベースを取得し、以下を読む:
   - `git diff <merge-base>...HEAD --stat`
   - `git log <merge-base>..HEAD --pretty=format:'%h %s%n%b%n---'`

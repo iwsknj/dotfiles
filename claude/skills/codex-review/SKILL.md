@@ -1,6 +1,7 @@
 ---
 name: codex-review
-description: OpenAI Codex CLIを使用したコードレビュー、分析、コードベースへの質問を実行する。使用場面: (1) コードレビュー依頼時、(2) コードベース全体の分析、(3) 実装に関する質問、(4) バグの調査、(5) リファクタリング提案、(6) 解消が難しい問題の調査。トリガー: "codex-review", "コードレビュー", "レビューして", "分析して", "/codex-review"
+description: OpenAI Codex CLIを使用したコードレビュー、分析、コードベースへの質問を実行する。Codexを明示的に指名されたときだけ使う（単に「レビューして」は組み込みの /code-review の担当）。トリガー: "codex-review", "codexでレビュー", "codexで分析", "/codex-review"
+allowed-tools: Bash(codex:*)
 ---
 
 # Codex
