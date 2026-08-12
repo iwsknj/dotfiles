@@ -117,6 +117,25 @@
   },
   "model": "fable",
   "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -c . >> \"$HOME/Library/Application Support/Banto/events.jsonl\""
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
         "matcher": "Edit|Write",
@@ -128,13 +147,22 @@
         ]
       }
     ],
-    "Notification": [
+    "SessionEnd": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "afplay /System/Library/Sounds/Glass.aiff"
+            "command": "jq -c . >> \"$HOME/Library/Application Support/Banto/events.jsonl\""
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -c . >> \"$HOME/Library/Application Support/Banto/events.jsonl\""
           }
         ]
       }
@@ -146,6 +174,24 @@
           {
             "type": "command",
             "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -c . >> \"$HOME/Library/Application Support/Banto/events.jsonl\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -c . >> \"$HOME/Library/Application Support/Banto/events.jsonl\""
           }
         ]
       }
@@ -160,10 +206,10 @@
     "swift-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
-    "hummer98-using-cmux": {
+    "hummer98-cfork": {
       "source": {
         "source": "github",
-        "repo": "hummer98/using-cmux"
+        "repo": "hummer98/cfork"
       }
     },
     "hummer98-cmux-team": {
@@ -172,14 +218,16 @@
         "repo": "hummer98/cmux-team"
       }
     },
-    "hummer98-cfork": {
+    "hummer98-using-cmux": {
       "source": {
         "source": "github",
-        "repo": "hummer98/cfork"
+        "repo": "hummer98/using-cmux"
       }
     }
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true
+  "skipWorkflowUsageWarning": true,
+  "skipAutoPermissionPrompt": true,
+  "includeCoAuthoredBy": false
 }
