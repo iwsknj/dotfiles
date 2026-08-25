@@ -137,4 +137,17 @@ else
 	ln -sfv $HOME/dotfiles/codex/skills $HOME/.codex/skills
 fi
 
+########## mise
+miseConfigDir="$HOME/.config/mise"
+if [ -L "$miseConfigDir" ]; then
+	echo "$miseConfigDir はすでにシンボリックリンクです。"
+else
+	if [ -e "$miseConfigDir" ]; then
+		mv "$miseConfigDir" "$HOME/.config/mise.bak"
+	fi
+	ln -sfv $HOME/dotfiles/mise $HOME/.config/mise
+fi
+# シンボリックリンク先の設定は untrusted 扱いになるため明示的に信頼する
+mise trust $HOME/dotfiles/mise/config.toml
+
 echo "DONE"

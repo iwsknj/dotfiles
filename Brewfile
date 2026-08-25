@@ -48,6 +48,8 @@ brew "jq"
 brew "lazygit"
 # Postgres C API library
 brew "libpq"
+# YAML parser (mise で Ruby をビルドする際に必要)
+brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
 # Polyglot runtime manager (asdf rust clone)
@@ -62,8 +64,6 @@ brew "pnpm"
 brew "poppler"
 # Generic machine emulator and virtualizer
 brew "qemu"
-# Ruby version manager
-brew "rbenv"
 # SVG rendering tool and library
 brew "resvg"
 # Search tool like grep and The Silver Searcher

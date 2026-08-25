@@ -19,9 +19,6 @@ eval "$(mise activate zsh)"
 # cargo(rust)
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# golang
-export PATH=$PATH:/usr/local/go/bin
-
 # ~/dotfiles/zsh ディレクトリ内の *.zsh ファイルを読み込む
 for file in ~/dotfiles/zsh/*.zsh; do
     source $file
