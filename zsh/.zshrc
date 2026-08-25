@@ -33,7 +33,7 @@ if [ -f '/Users/kenj/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ke
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/kenj/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kenj/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
 
-. "$HOME/.local/bin/env"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Added by Antigravity
 export PATH="/Users/kenj/.antigravity/antigravity/bin:$PATH"
