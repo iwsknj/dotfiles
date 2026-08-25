@@ -18,7 +18,7 @@ allowed-tools: Bash(codex:*)
 `codex exec`で単一のクエリを実行します:
 
 ```bash
-codex exec "Your question or task here"
+codex exec "Your question or task here" </dev/null
 ```
 
 ## よく使うオプション
@@ -29,6 +29,7 @@ codex exec "Your question or task here"
 | `-C DIR`      | 作業ディレクトリを設定                          |
 | `--sandbox workspace-write` | ワークスペース内の書き込みを許可 |
 | `-c 'approval_policy="never"'` | 確認プロンプトなしで非対話実行 |
+| `</dev/null`          | stdin を閉じる。**必須**。省略すると stdin が開いたままの環境（Claude Code の Bash 等）で Codex が「Reading additional input from stdin...」のまま入力待ちでハングする（openai/codex#20919） |
 
 > すべての利用可能なオプションについては、`codex exec --help`を実行してください
 
@@ -37,19 +38,19 @@ codex exec "Your question or task here"
 **コーディングの質問をする:**
 
 ```bash
-codex exec "How do I implement a binary search in Python?"
+codex exec "How do I implement a binary search in Python?" </dev/null
 ```
 
 **特定のディレクトリのコードを分析する:**
 
 ```bash
-codex exec -C /path/to/project "Explain the architecture of this codebase"
+codex exec -C /path/to/project "Explain the architecture of this codebase" </dev/null
 ```
 
 **Codexに自動的に変更を加えさせる:**
 
 ```bash
-codex exec -c 'approval_policy="never"' --sandbox workspace-write "Add error handling to all API endpoints"
+codex exec -c 'approval_policy="never"' --sandbox workspace-write "Add error handling to all API endpoints" </dev/null
 ```
 
 ## 注意事項
@@ -58,3 +59,4 @@ codex exec -c 'approval_policy="never"' --sandbox workspace-write "Add error han
 - デフォルトでは、出力はstdoutに送られ、承認なしではファイルは変更されません
 - サンドボックスの制約内で自動実行するには`-c 'approval_policy="never"'`と`--sandbox workspace-write`を使用してください
 - `-C`が指定されない限り、コマンドは現在の作業ディレクトリを継承します
+- 必ず末尾に `</dev/null` を付ける。stdin が開いたままだと Codex は stdin の EOF を待ち続けてハングする（openai/codex#20919）

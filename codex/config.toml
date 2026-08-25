@@ -7,7 +7,7 @@ default_permissions = "kenj"
 notify = ["/Users/kenj/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended", "--previous-notify", "[\"afplay\",\"\\/System\\/Library\\/Sounds\\/Glass.aiff\"]"]
 
 [features]
-codex_hooks = true
+hooks = true
 js_repl = false
 
 [[hooks.PreToolUse]]
@@ -105,6 +105,15 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/kenj/Codes/personals/menes"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Desktop/banto-scratch"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Codes/personals/banto"]
+trust_level = "trusted"
+
+[projects."/Users/kenj/Desktop/banto-scratch/generate-image"]
 trust_level = "trusted"
 
 [notice.model_migrations]

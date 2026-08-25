@@ -1,4 +1,5 @@
 {
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Bash(git *)",
@@ -115,7 +116,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "fable",
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "Notification": [
       {
@@ -228,6 +229,5 @@
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
-  "skipAutoPermissionPrompt": true,
-  "includeCoAuthoredBy": false
+  "skipAutoPermissionPrompt": true
 }

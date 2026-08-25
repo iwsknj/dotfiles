@@ -10,7 +10,7 @@ Codex CLIを使用してコードレビュー・分析を実行するスキル�
 
 ## 実行コマンド
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_directory> "<request>"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_directory> "<request>" </dev/null
 
 ## パラメータ
 
@@ -20,6 +20,7 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_direct
 | `--sandbox read-only` | 読み取り専用サンドボックス（安全な分析用） |
 | `--cd <dir>`          | 対象プロジェクトのディレクトリ             |
 | `"<request>"`         | 依頼内容（日本語可）                       |
+| `</dev/null`          | stdin を閉じる。**必須**。省略すると stdin が開いたままの環境（Claude Code の Bash 等）で Codex が「Reading additional input from stdin...」のまま入力待ちでハングする（openai/codex#20919） |
 
 ## 使用例
 
@@ -27,19 +28,19 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_direct
 
 ### コードレビュー
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "このプロジェクトのコードをレビューして、改善点を指摘してください"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "このプロジェクトのコードをレビューして、改善点を指摘してください" </dev/null
 
 ### アーキテクチャ分析
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "このプロジェクトのアーキテクチャを分析して説明してください。確認や質問は不要です。改善提案まで自主的に出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "このプロジェクトのアーキテクチャを分析して説明してください。確認や質問は不要です。改善提案まで自主的に出力してください。" </dev/null
 
 ### リファクタリング提案
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "技術的負債を特定し、リファクタリング計画を提案してください。確認や質問は不要です。具体的なコード例まで自主的に出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "技術的負債を特定し、リファクタリング計画を提案してください。確認や質問は不要です。具体的なコード例まで自主的に出力してください。" </dev/null
 
 ### バグ調査
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "認証処理でエラーが発生する原因を調査してください"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project "認証処理でエラーが発生する原因を調査してください" </dev/null
 
 ## 実行手順
 

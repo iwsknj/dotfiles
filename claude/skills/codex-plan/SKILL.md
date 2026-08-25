@@ -10,7 +10,7 @@ Codex CLIを使用してコードベースを分析し、詳細な実装計画�
 
 ## 実行コマンド
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_directory> -o <出力先>/plan.md "<request>"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_directory> -o <出力先>/plan.md "<request>" </dev/null
 
 `--sandbox read-only` のため Codex 自身はファイルを書き込めない。`plan.md` は `-o`（最終メッセージのファイル書き出し）で生成する。
 
@@ -23,6 +23,7 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_direct
 | `--cd <dir>`          | 対象プロジェクトのディレクトリ             |
 | `-o <file>`           | Codex の最終メッセージを書き出すパス（= `plan.md` の生成先） |
 | `"<request>"`         | 依頼内容（日本語可）                       |
+| `</dev/null`          | stdin を閉じる。**必須**。省略すると stdin が開いたままの環境（Claude Code の Bash 等）で Codex が「Reading additional input from stdin...」のまま入力待ちでハングする（openai/codex#20919） |
 
 ## 計画ドキュメントの要件
 
@@ -38,13 +39,13 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_direct
 ### 基本パターン: 新機能の実装計画
 
 ```bash
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/plan.md "システムを拡張して<ビジネス成果>を実行する新しい機能<名前と説明>を構築したいと考えています。これを実装する方法を概説した詳細な実装計画をMarkdownで出力してください。コードスニペットを含めます。確認や質問は不要です。具体的な計画まで自主的に出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/plan.md "システムを拡張して<ビジネス成果>を実行する新しい機能<名前と説明>を構築したいと考えています。これを実装する方法を概説した詳細な実装計画をMarkdownで出力してください。コードスニペットを含めます。確認や質問は不要です。具体的な計画まで自主的に出力してください。" </dev/null
 ```
 
 ### パターン1: ページネーション機能の追加
 
 ```bash
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/plan.md "リストエンドポイントは、オフセットではなくカーソルベースのページネーションをサポートする必要があります。これを実現する詳細な実装計画をMarkdownで出力してください。変更を提案する前にソースファイルを読み取り、実際のコードベースに基づいて計画を立ててください。確認や質問は不要です。具体的なコード例まで自主的に出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/plan.md "リストエンドポイントは、オフセットではなくカーソルベースのページネーションをサポートする必要があります。これを実現する詳細な実装計画をMarkdownで出力してください。変更を提案する前にソースファイルを読み取り、実際のコードベースに基づいて計画を立ててください。確認や質問は不要です。具体的なコード例まで自主的に出力してください。" </dev/null
 ```
 
 ### パターン2: 参照実装を共有する場合
@@ -56,7 +57,7 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/projec
 
 [参照コードをここに貼り付け]
 
-同様のアプローチを採用する実装計画をMarkdownで出力してください。実際のコードベースを読み取り、具体的な実装計画を提案してください。確認や質問は不要です。コードスニペットを含む詳細な計画まで自主的に出力してください。"
+同様のアプローチを採用する実装計画をMarkdownで出力してください。実際のコードベースを読み取り、具体的な実装計画を提案してください。確認や質問は不要です。コードスニペットを含む詳細な計画まで自主的に出力してください。" </dev/null
 ```
 
 ### パターン3: 調査フェーズ結果を参照する場合
@@ -64,7 +65,7 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/projec
 `codex-research`を実行済みで、既存の`research.md`がある場合：
 
 ```bash
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/plan.md "システムを拡張して新しい機能を構築したいと考えています。タスク番号/タスク名のディレクトリ配下に既存のresearch.mdがある場合は、その内容を参照して計画を立ててください。これを実装する方法を概説した詳細な実装計画をMarkdownで出力してください。コードスニペットを含めます。確認や質問は不要です。具体的な計画まで自主的に出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/plan.md "システムを拡張して新しい機能を構築したいと考えています。タスク番号/タスク名のディレクトリ配下に既存のresearch.mdがある場合は、その内容を参照して計画を立ててください。これを実装する方法を概説した詳細な実装計画をMarkdownで出力してください。コードスニペットを含めます。確認や質問は不要です。具体的な計画まで自主的に出力してください。" </dev/null
 ```
 
 ## 重要な原則

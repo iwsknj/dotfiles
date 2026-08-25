@@ -10,7 +10,7 @@ Codex CLIを使用してコードベースを深く読み込み、実装前に r
 
 ## 実行コマンド
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_directory> -o <出力先>/research.md "<request>"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_directory> -o <出力先>/research.md "<request>" </dev/null
 
 `--sandbox read-only` のため Codex 自身はファイルを書き込めない。`research.md` は `-o`（最終メッセージのファイル書き出し）で生成する。
 
@@ -23,6 +23,7 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_direct
 | `--cd <dir>`          | 対象プロジェクトのディレクトリ             |
 | `-o <file>`           | Codex の最終メッセージを書き出すパス（= `research.md` の生成先） |
 | `"<request>"`         | 依頼内容（日本語可）                       |
+| `</dev/null`          | stdin を閉じる。**必須**。省略すると stdin が開いたままの環境（Claude Code の Bash 等）で Codex が「Reading additional input from stdin...」のまま入力待ちでハングする（openai/codex#20919） |
 
 ## 使用例
 
@@ -30,19 +31,19 @@ codex exec -c 'approval_policy="never"' --sandbox read-only --cd <project_direct
 
 ### 実装前の現状把握
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/research.md "<機能名>を追加する前提で、関連する既存実装・データフロー・呼び出し経路を調査してください。確認や質問は不要です。学び・前提・落とし穴を整理したMarkdownを出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/research.md "<機能名>を追加する前提で、関連する既存実装・データフロー・呼び出し経路を調査してください。確認や質問は不要です。学び・前提・落とし穴を整理したMarkdownを出力してください。" </dev/null
 
 ### 影響範囲の調査
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/research.md "<変更内容>を行った場合に影響を受ける箇所（呼び出し元・DBスキーマ・バッチ・テスト）を洗い出してください。確認や質問は不要です。学び・前提・落とし穴を整理したMarkdownを出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/research.md "<変更内容>を行った場合に影響を受ける箇所（呼び出し元・DBスキーマ・バッチ・テスト）を洗い出してください。確認や質問は不要です。学び・前提・落とし穴を整理したMarkdownを出力してください。" </dev/null
 
 ### 既存パターンの調査
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/research.md "<類似機能>がこのコードベースでどう実装されているかを調査し、新機能で踏襲すべきパターンと避けるべき点を整理してください。確認や質問は不要です。学び・前提・落とし穴を整理したMarkdownを出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/research.md "<類似機能>がこのコードベースでどう実装されているかを調査し、新機能で踏襲すべきパターンと避けるべき点を整理してください。確認や質問は不要です。学び・前提・落とし穴を整理したMarkdownを出力してください。" </dev/null
 
 ### 制約・落とし穴の調査
 
-codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/research.md "<対象領域>の実装に着手する前に知っておくべき制約・暗黙の前提・既存のワークアラウンドを調査してください。確認や質問は不要です。学び・前提・落とし穴を整理したMarkdownを出力してください。"
+codex exec -c 'approval_policy="never"' --sandbox read-only --cd /path/to/project -o <出力先>/research.md "<対象領域>の実装に着手する前に知っておくべき制約・暗黙の前提・既存のワークアラウンドを調査してください。確認や質問は不要です。学び・前提・落とし穴を整理したMarkdownを出力してください。" </dev/null
 
 ## 実行手順
 
