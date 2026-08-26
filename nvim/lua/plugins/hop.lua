@@ -1,7 +1,6 @@
 return {
-  "phaazon/hop.nvim",
+  "smoka7/hop.nvim", -- phaazon/hop.nvim は GitHub から削除済み。後継フォーク（master が v2 系の続き）
   vscode = true,
-  branch = "v2",
   config = function()
     -- place this in one of your configuration file(s)
     local hop = require("hop")
