@@ -88,3 +88,6 @@ alias cd_obsidian='cd "/Users/kenj/Library/Mobile Documents/iCloud~md~obsidian/D
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
+
+# Tailscale
+alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
