@@ -10,15 +10,6 @@ notify = ["/Users/kenj/.codex/computer-use/Codex Computer Use.app/Contents/Share
 hooks = true
 js_repl = false
 
-[[hooks.PreToolUse]]
-matcher = "Edit|Write|Bash|exec_command"
-
-[[hooks.PreToolUse.hooks]]
-type = "command"
-command = "/Users/kenj/dotfiles/coding-agent/hooks/check-git-tracked.sh"
-timeout = 30
-statusMessage = "Checking git tracked file"
-
 [[hooks.Stop]]
 
 [[hooks.Stop.hooks]]
@@ -27,10 +18,6 @@ command = "afplay /System/Library/Sounds/Glass.aiff"
 timeout = 5
 
 [hooks.state]
-
-[hooks.state."/Users/kenj/.codex/config.toml:pre_tool_use:0:0"]
-trusted_hash = "sha256:074257b92fbf988852da8fc41fdae0a511b2835d2b329550b2571c1a90d8f0c0"
-enabled = true
 
 [hooks.state."/Users/kenj/.codex/config.toml:stop:0:0"]
 trusted_hash = "sha256:8068f821f89aebb0c11c9a357297affa4c944cd02de1bf994844e0752e41a30c"
@@ -66,6 +53,9 @@ trusted_hash = "sha256:65580cc73ed8429c8af4644c30b7f7730685526e047c01c9daa4010d6
 
 [hooks.state."/Users/kenj/.codex/hooks.json:stop:0:0"]
 trusted_hash = "sha256:7f15081fabc338def61cce77d27eabbc4d2deae2e4d4d600cda26824ecfc1420"
+
+[hooks.state."/Users/kenj/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:70b854b300317ca255f303bc8b19cd30db0f0c3619a9efc23ea8b0da89f1a88b"
 
 [permissions.kenj.filesystem]
 ":minimal" = "read"
